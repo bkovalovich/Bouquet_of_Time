@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -423,10 +423,10 @@ public class ThirdPersonCharacterController : MonoBehaviour
                 return true;
             }
 
-            /*if (hitInfo.distance < minStairDepth)
+            *//*if (hitInfo.distance < minStairDepth)
             {
                 return true;
-            }*/
+            }*//*
 
             downRay = new Ray(hitInfo.point + transform.up + distanceThisFrame.normalized * BUFFER_DIST, -transform.up);
             Debug.DrawRay(downRay.origin, downRay.direction, Color.green, 1);
@@ -525,7 +525,7 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
     private void Move()
     {
-        /*if(playerState.CurrentState == PlayerMoveState.WallRunning)
+        *//*if(playerState.CurrentState == PlayerMoveState.WallRunning)
         {
             WallMove();
         }
@@ -536,8 +536,8 @@ public class ThirdPersonCharacterController : MonoBehaviour
         else if(playerState.CurrentState == PlayerMoveState.Airborne)
         {
             AirborneMove();
-        }*/
-        else if(playerState.Grounded)
+        }
+        else *//*if(playerState.Grounded)
         {
             GroundedMove();
         }
@@ -665,3 +665,4 @@ public class ThirdPersonCharacterController : MonoBehaviour
         }
     }
 }
+*/
