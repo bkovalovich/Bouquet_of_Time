@@ -525,7 +525,7 @@ public class ThirdPersonCharacterController : MonoBehaviour
 
     private void Move()
     {
-        if(playerState.CurrentState == PlayerMoveState.WallRunning)
+        /*if(playerState.CurrentState == PlayerMoveState.WallRunning)
         {
             WallMove();
         }
@@ -536,7 +536,7 @@ public class ThirdPersonCharacterController : MonoBehaviour
         else if(playerState.CurrentState == PlayerMoveState.Airborne)
         {
             AirborneMove();
-        }
+        }*/
         else if(playerState.Grounded)
         {
             GroundedMove();
