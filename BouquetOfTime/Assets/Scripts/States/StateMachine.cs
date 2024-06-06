@@ -36,11 +36,6 @@ public class StateMachine : MonoBehaviour
 
     public void TransitionTo(PlayerState state)
     {
-        if (currentState)
-        {
-            currentState.ExitState();
-        }
-
         state.EnterState(currentState);
         currentState = state;
     }
