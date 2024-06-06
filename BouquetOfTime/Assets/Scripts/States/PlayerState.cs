@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public abstract class PlayerState : MonoBehaviour
 {
-    [SerializeField] InputReaderSO input;
+    [SerializeField] protected InputSO input;
 
     public Rigidbody rb;
 
@@ -20,7 +20,6 @@ public abstract class PlayerState : MonoBehaviour
 
     public void ExitState()
     {
-
         OnExit?.Invoke();
     }
 
