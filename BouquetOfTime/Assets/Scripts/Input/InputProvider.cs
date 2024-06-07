@@ -7,6 +7,18 @@ public class InputProvider : MonoBehaviour
 {
     [SerializeField] InputSO input;
 
+
+
+    private void OnEnable()
+    {
+
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         input.OnMove?.Invoke(context);

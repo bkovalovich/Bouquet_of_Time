@@ -10,6 +10,8 @@ public class StateMachine : MonoBehaviour
 
     [SerializeField] PlayerState currentState;
 
+    
+
     private void OnEnable()
     {
         if(!playerInfo)

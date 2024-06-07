@@ -29,7 +29,7 @@ public class GroundedState : PlayerState
         if(jump)
         {
             jump = false;
-            playerInfo.rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
 
@@ -40,8 +40,8 @@ public class GroundedState : PlayerState
 
     private void Move()
     {
-        float y = playerInfo.rb.velocity.y;
-        playerInfo.rb.velocity = Vector3.MoveTowards(playerInfo.rb.velocity, new Vector3(input.MoveDirection.x * 10, y, input.MoveDirection.y * 10), 50 * Time.deltaTime);
+        float y = rb.velocity.y;
+        rb.velocity = Vector3.MoveTowards(rb.velocity, new Vector3(input.MoveDirection.x * 10, y, input.MoveDirection.y * 10), 50 * Time.deltaTime);
     }
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext context)
