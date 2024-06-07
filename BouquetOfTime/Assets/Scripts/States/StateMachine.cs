@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
+    [SerializeField] PlayerInfoSO playerInfo;
+
     [SerializeField] PlayerState defaultState;
 
     [SerializeField] PlayerState currentState;
 
     private void OnEnable()
     {
-        /*Rigidbody rb = GetComponentInParent<Rigidbody>();
+        if(!playerInfo)
+        {
+            playerInfo = new PlayerInfoSO();
+        }
+        playerInfo.rb = GetComponentInParent<Rigidbody>();
+        Debug.Log(playerInfo.rb);
         foreach (PlayerState state in GetComponentsInChildren<PlayerState>())
         {
-            state.rb = rb;
-        }*/
+            state.playerInfo = playerInfo;
+        }
     }
 
     // Start is called before the first frame update

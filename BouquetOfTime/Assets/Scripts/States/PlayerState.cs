@@ -7,7 +7,9 @@ public abstract class PlayerState : MonoBehaviour
 {
     [SerializeField] protected InputSO input;
 
-    public Rigidbody rb;
+    public PlayerInfoSO playerInfo;
+
+    protected Rigidbody rb => playerInfo.rb;
 
     public abstract void FrameUpdate();
     public abstract void PhysicsUpdate();
