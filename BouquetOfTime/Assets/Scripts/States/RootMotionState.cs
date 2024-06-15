@@ -14,6 +14,6 @@ public class RootMotionState : PlayerState
     public override void PhysicsUpdate()
     {
         rb.transform.position += animator.deltaPosition;
-        rb.rotation = animator.deltaRotation * rb.rotation;
+        //rb.rotation = animator.deltaRotation * rb.rotation;
     }
 }
