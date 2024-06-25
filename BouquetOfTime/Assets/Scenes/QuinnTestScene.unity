@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 190879797}
   - component: {fileID: 190879796}
   - component: {fileID: 190879795}
+  - component: {fileID: 190879798}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -180,11 +181,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -208,13 +209,47 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190879794}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052598, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 5.25, z: -10}
+  m_LocalRotation: {x: 0.0009323891, y: 0.9986429, z: -0.04838487, w: 0.019244114}
+  m_LocalPosition: {x: -0.19263081, y: 3.42, z: 4.9962883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+--- !u!114 &190879798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190879794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &486380455
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +650,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.019223956
+      objectReference: {fileID: 0}
+    - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0012822744
+      objectReference: {fileID: 0}
+    - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06654166
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.019244099
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0009323884
+      objectReference: {fileID: 0}
     - target: {fileID: 5276362882607514410, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -658,6 +713,18 @@ PrefabInstance:
     - target: {fileID: 7101898883074106343, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_Name
       value: P_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.019257829
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0005831184
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.03026006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
