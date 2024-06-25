@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9ab336dd5454ae1428df5ca882f86b3e
+guid: a9f13c12181549e4f808050735b68a70
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,22 +33,22 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Roundhouse
+      name: FastRun
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 11
-      lastFrame: 58
+      firstFrame: 0
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
