@@ -22,6 +22,6 @@ public class TestRootMotion : MonoBehaviour
 
     private void OnAnimatorMove()
     {
-        //rb.position += animator.deltaPosition;
+        rb.position += animator.deltaPosition;
     }
 }

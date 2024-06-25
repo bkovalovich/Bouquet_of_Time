@@ -41,7 +41,15 @@ public class GroundedState : PlayerState
     private void Move()
     {
         float y = rb.velocity.y;
-        rb.velocity = Vector3.MoveTowards(rb.velocity, new Vector3(input.MoveDirection.x * 10, y, input.MoveDirection.y * 10), 50 * Time.deltaTime);
+        Vector3 moveDir = new Vector3(input.MoveDirection.x, y, input.MoveDirection.y);
+        Vector3 horizontalCameraDir = Camera.main.transform.forward;
+        horizontalCameraDir.y = 0;
+        horizontalCameraDir.Normalize();
+        Quaternion CameraRotation = Quaternion.FromToRotation(Vector3.forward, horizontalCameraDir);
+
+        moveDir = CameraRotation * moveDir;
+
+        rb.velocity = Vector3.MoveTowards(rb.velocity, moveDir * 10, 50 * Time.deltaTime);
     }
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext context)
