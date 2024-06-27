@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class GroundedState : PlayerState
 {
+    public float maxSpeed;
+
     public FloatVariableSO gravityMagnitude;
 
     public UnityEvent OnAirbourneExit;
@@ -49,7 +51,7 @@ public class GroundedState : PlayerState
 
         moveDir = CameraRotation * moveDir;
 
-        rb.velocity = Vector3.MoveTowards(rb.velocity, moveDir * 10, 50 * Time.deltaTime);
+        rb.velocity = Vector3.MoveTowards(rb.velocity, moveDir * maxSpeed, 50 * Time.deltaTime);
     }
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext context)
