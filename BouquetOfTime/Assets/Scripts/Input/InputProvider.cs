@@ -24,7 +24,6 @@ public class InputProvider : MonoBehaviour
         input.OnMove?.Invoke(context);
         if (context.performed)
         {
-            Debug.Log($"MoveValue: {context.ReadValue<Vector2>()}");
             input.MoveDirection = context.ReadValue<Vector2>();
             
         }
