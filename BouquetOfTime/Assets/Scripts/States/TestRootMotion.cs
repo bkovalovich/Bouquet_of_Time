@@ -17,11 +17,12 @@ public class TestRootMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //make this framerate independent
+        animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), rb.velocity.magnitude * 0.07f, 1 - Mathf.Pow(0.005f, Time.deltaTime)));
     }
 
     private void OnAnimatorMove()
     {
-        //rb.position += animator.deltaPosition;
+        rb.position += animator.deltaPosition;
     }
 }
