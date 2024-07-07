@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GroundedState : PlayerState
 {
@@ -13,28 +14,51 @@ public class GroundedState : PlayerState
     public FloatVariableSO gravityMagnitude;
 
     public UnityEvent OnAirbourneExit;
+    public UnityEvent OnSprintExit;
 
     private bool jump;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         input.OnJump += Jump;
+        input.OnSprint += OnSprint;
     }
 
-    private void OnDisable()
+    protected virtual void OnSprint(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            ExitSprint();
+        }
+    }
+
+    protected void Jump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            jump = true;
+        }
+        else if(context.canceled)
+        {
+            if(rb.velocity.y > 0)
+            {
+                rb.velocity *= 0.5f;
+            }
+        }
+    }
+
+
+    protected virtual void OnDisable()
     {
         input.OnJump -= Jump;
+        input.OnSprint -= OnSprint;
     }
 
     public override void FrameUpdate()
     {
         CheckGrounded();
 
-        if(jump)
-        {
-            jump = false;
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        }
+        DoJump();
     }
 
     public override void PhysicsUpdate()
@@ -42,7 +66,16 @@ public class GroundedState : PlayerState
         Move();
     }
 
-    private void Move()
+    protected virtual void DoJump()
+    {
+        if (jump)
+        {
+            jump = false;
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        }
+    }
+
+    protected virtual void Move()
     {
         Vector3 velocity = rb.velocity;
         float y = velocity.y;
@@ -61,13 +94,7 @@ public class GroundedState : PlayerState
 
     }
 
-    private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext context)
-    {
-        if(context.started)
-        {
-            jump = true;
-        }
-    }
+   
 
     public void CheckGrounded()
     {
@@ -95,6 +122,13 @@ public class GroundedState : PlayerState
         ExitState();
 
         OnAirbourneExit?.Invoke();
+    }
+
+    public void ExitSprint()
+    {
+        ExitState();
+
+        OnSprintExit?.Invoke();
     }
 
 

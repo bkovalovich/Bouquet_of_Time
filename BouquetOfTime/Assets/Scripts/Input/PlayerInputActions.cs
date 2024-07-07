@@ -44,6 +44,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b63188c-ae08-40b4-aa63-60f6b9792b8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +185,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd3a9fb5-8a82-4e16-8991-0e06e6cc7dd2"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ccf1d3c-3400-4e2a-a5d1-e7491e84ca58"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -784,6 +815,74 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""67cd0d4c-740e-4981-8403-4a635ca3c48a"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""38c1cfd9-8f54-4d38-94b5-bd9a13b6c28a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""01a1db56-147e-4fa2-8f37-ef2e8d6111c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""c171e18d-2972-48b2-a226-b4ed81ec900e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""44192262-5bca-42e1-b67e-c16bbc56e78e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7670ddfa-007d-4e1c-b1eb-f54572ba66b3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrimaryAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60e8c2f8-b3da-45e7-b1d9-5fec3da93fd7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SecondaryAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -853,6 +952,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
         m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
         m_PlayerMove_Jump = m_PlayerMove.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMove_Sprint = m_PlayerMove.FindAction("Sprint", throwIfNotFound: true);
         // PlayerCameraLook
         m_PlayerCameraLook = asset.FindActionMap("PlayerCameraLook", throwIfNotFound: true);
         m_PlayerCameraLook_MouseX = m_PlayerCameraLook.FindAction("MouseX", throwIfNotFound: true);
@@ -871,6 +971,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // PlayerActions
+        m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerActions_PrimaryAttack = m_PlayerActions.FindAction("PrimaryAttack", throwIfNotFound: true);
+        m_PlayerActions_SecondaryAttack = m_PlayerActions.FindAction("SecondaryAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -934,12 +1039,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerMoveActions> m_PlayerMoveActionsCallbackInterfaces = new List<IPlayerMoveActions>();
     private readonly InputAction m_PlayerMove_Move;
     private readonly InputAction m_PlayerMove_Jump;
+    private readonly InputAction m_PlayerMove_Sprint;
     public struct PlayerMoveActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerMoveActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
         public InputAction @Jump => m_Wrapper.m_PlayerMove_Jump;
+        public InputAction @Sprint => m_Wrapper.m_PlayerMove_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMove; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -955,6 +1062,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IPlayerMoveActions instance)
@@ -965,6 +1075,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IPlayerMoveActions instance)
@@ -1170,6 +1283,68 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // PlayerActions
+    private readonly InputActionMap m_PlayerActions;
+    private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+    private readonly InputAction m_PlayerActions_Interact;
+    private readonly InputAction m_PlayerActions_PrimaryAttack;
+    private readonly InputAction m_PlayerActions_SecondaryAttack;
+    public struct PlayerActionsActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public PlayerActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+        public InputAction @PrimaryAttack => m_Wrapper.m_PlayerActions_PrimaryAttack;
+        public InputAction @SecondaryAttack => m_Wrapper.m_PlayerActions_SecondaryAttack;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @PrimaryAttack.started += instance.OnPrimaryAttack;
+            @PrimaryAttack.performed += instance.OnPrimaryAttack;
+            @PrimaryAttack.canceled += instance.OnPrimaryAttack;
+            @SecondaryAttack.started += instance.OnSecondaryAttack;
+            @SecondaryAttack.performed += instance.OnSecondaryAttack;
+            @SecondaryAttack.canceled += instance.OnSecondaryAttack;
+        }
+
+        private void UnregisterCallbacks(IPlayerActionsActions instance)
+        {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @PrimaryAttack.started -= instance.OnPrimaryAttack;
+            @PrimaryAttack.performed -= instance.OnPrimaryAttack;
+            @PrimaryAttack.canceled -= instance.OnPrimaryAttack;
+            @SecondaryAttack.started -= instance.OnSecondaryAttack;
+            @SecondaryAttack.performed -= instance.OnSecondaryAttack;
+            @SecondaryAttack.canceled -= instance.OnSecondaryAttack;
+        }
+
+        public void RemoveCallbacks(IPlayerActionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1219,6 +1394,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IPlayerCameraLookActions
     {
@@ -1239,5 +1415,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActionsActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
+        void OnPrimaryAttack(InputAction.CallbackContext context);
+        void OnSecondaryAttack(InputAction.CallbackContext context);
     }
 }

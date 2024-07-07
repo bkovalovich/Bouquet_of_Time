@@ -209,8 +209,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190879794}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6007281, y: 0.27553838, z: -0.23191094, w: 0.71373785}
-  m_LocalPosition: {x: -0.5913203, y: 7.83, z: -0.65172106}
+  m_LocalRotation: {x: 0.59802145, y: 0.283728, z: -0.23880388, w: 0.71052206}
+  m_LocalPosition: {x: -0.6061527, y: 7.83, z: -0.637949}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -650,37 +650,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: PlayerMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7137379
+      value: 0.7105221
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6007281
+      value: 0.5980214
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.27553824
+      value: 0.283728
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.23191081
+      value: -0.23880382
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7245468
+      value: 0.72128224
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5876462
+      value: 0.5849984
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.279711
+      value: 0.28802478
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2268606
+      value: -0.23360349
       objectReference: {fileID: 0}
     - target: {fileID: 5276362882607514410, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -727,29 +735,25 @@ PrefabInstance:
       value: P_Player
       objectReference: {fileID: 0}
     - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7350883
+      value: 0.7317762
       objectReference: {fileID: 0}
     - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5744051
+      value: 0.571817
       objectReference: {fileID: 0}
     - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.2837807
+      value: 0.29221553
       objectReference: {fileID: 0}
     - target: {fileID: 7316431825561923534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.221749
+      value: -0.22834007
       objectReference: {fileID: 0}
-    - target: {fileID: 7537746970952087900, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
-      propertyPath: acceleration
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537746970952087900, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
-      propertyPath: gravityMagnitude
-      value: 
-      objectReference: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
