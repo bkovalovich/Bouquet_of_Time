@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] float movementSpeed, mouseSensitivity;
     [SerializeField] Transform cameraTransform;
     private Rigidbody rb;
-    private PlayerInput playerInput;
+    private PlayerInputActions playerInput;
     private InputAction move, lookX, lookY;
     private bool isMoving;
     private float xRotation = 0;
     private void Awake() {
         rb = gameObject.GetComponent<Rigidbody>();
-        playerInput = new PlayerInput();
+        playerInput = new PlayerInputActions();
 
     }
     private void Start() {

@@ -6,6 +6,10 @@ using UnityEngine.Events;
 
 public class GroundedState : PlayerState
 {
+    public float maxSpeed;
+
+    public float acceleration;
+
     public FloatVariableSO gravityMagnitude;
 
     public UnityEvent OnAirbourneExit;
@@ -29,7 +33,7 @@ public class GroundedState : PlayerState
         if(jump)
         {
             jump = false;
-            playerInfo.rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
 
@@ -40,8 +44,21 @@ public class GroundedState : PlayerState
 
     private void Move()
     {
-        float y = playerInfo.rb.velocity.y;
-        playerInfo.rb.velocity = Vector3.MoveTowards(playerInfo.rb.velocity, new Vector3(input.MoveDirection.x * 10, y, input.MoveDirection.y * 10), 50 * Time.deltaTime);
+        Vector3 velocity = rb.velocity;
+        float y = velocity.y;
+        Vector3 moveDir = new Vector3(input.MoveDirection.x, y, input.MoveDirection.y);
+        Vector3 horizontalCameraDir = Camera.main.transform.forward;
+        horizontalCameraDir.y = 0;
+        horizontalCameraDir.Normalize();
+        Quaternion CameraRotation = Quaternion.FromToRotation(Vector3.forward, horizontalCameraDir);
+
+        moveDir = CameraRotation * moveDir;
+
+        velocity = Vector3.MoveTowards(velocity, moveDir * maxSpeed, acceleration * Time.deltaTime);
+
+        rb.AddForce((velocity - rb.velocity) / Time.deltaTime);
+
+
     }
 
     private void Jump(UnityEngine.InputSystem.InputAction.CallbackContext context)
