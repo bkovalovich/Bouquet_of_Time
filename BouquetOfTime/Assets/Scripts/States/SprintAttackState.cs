@@ -8,6 +8,13 @@ public class SprintAttackState : PlayerState
 
     public UnityEvent OnAttackFinishedExit;
 
+    [SerializeField] Animator animator;
+
+    protected virtual void OnEnable()
+    {
+        animator.CrossFade("SprintAttack", 0.25f);
+    }
+
     public override void FrameUpdate()
     {
         

@@ -18,7 +18,12 @@ public class TestRootMotion : MonoBehaviour
     void Update()
     {
         //make this framerate independent
-        animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), rb.velocity.magnitude * 0.07f, 1 - Mathf.Pow(0.005f, Time.deltaTime)));
+        animator.SetFloat("Velocity", rb.velocity.magnitude);
+        animator.SetFloat("VelocityX", rb.velocity.x);
+        animator.SetFloat("VelocityY", rb.velocity.y);
+        animator.SetFloat("VelocityZ", rb.velocity.z);
+        animator.SetFloat("HorizontalVelocity", rb.velocity.magnitude - rb.velocity.y);
+
     }
 
     private void OnAnimatorMove()
