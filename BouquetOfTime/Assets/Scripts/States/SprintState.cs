@@ -29,8 +29,19 @@ public class SprintState : GroundedState
         input.OnPrimaryAttack -= OnAttack;
     }
 
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        if(rb.velocity.sqrMagnitude < 0.5f)
+        {
+            ExitSprint();
+        }
+    }
+
     protected override void OnSprint(InputAction.CallbackContext context)
     {
+        Debug.Log("Exitting Sprint because the button was released");
         if (context.canceled)
         {
             ExitSprint();

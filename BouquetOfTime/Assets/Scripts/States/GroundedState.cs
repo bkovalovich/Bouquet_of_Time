@@ -32,6 +32,7 @@ public class GroundedState : PlayerState
 
     protected virtual void OnSprint(InputAction.CallbackContext context)
     {
+        Debug.Log("EXITED GROUNDED TO SPRINT");
         if(context.performed)
         {
             ExitSprint();
@@ -140,6 +141,11 @@ public class GroundedState : PlayerState
 
         if (Physics.SphereCast(ray, capsuleCollider.radius, out hitInfo, raydistance, groundMask, QueryTriggerInteraction.Ignore))
         {
+            if(Vector3.Dot(rb.transform.up, hitInfo.normal) < 0.8f)
+            {
+                ExitAirbourne();
+                return;
+            }
             Debug.DrawLine(ray.origin, hitInfo.point, Color.cyan, 1);
             //transform.position = transform.position + transform.up * (-Vector3.Dot(transform.up, transform.position) + Vector3.Dot(transform.up, hitInfo.point) + currentCollider.height * 0.5f + BUFFER_DIST);
 
