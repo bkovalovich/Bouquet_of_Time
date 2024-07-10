@@ -17,6 +17,8 @@ public class GroundedState : PlayerState
 
     public FloatVariableSO gravityMagnitude;
 
+    [SerializeField] CapsuleCollider capsuleCollider;
+
     public UnityEvent OnAirbourneExit;
     public UnityEvent OnSprintExit;
 
@@ -60,14 +62,15 @@ public class GroundedState : PlayerState
 
     public override void FrameUpdate()
     {
-        CheckGrounded();
-
+        //CheckGrounded();
+        
         DoJump();
     }
 
     public override void PhysicsUpdate()
     {
         Move();
+        SnapToGround();
     }
 
     protected virtual void DoJump()
@@ -83,8 +86,8 @@ public class GroundedState : PlayerState
     protected virtual void Move()
     {
         Vector3 velocity = rb.velocity;
-        float y = velocity.y;
-        Vector3 moveDir = new Vector3(input.MoveDirection.x, y, input.MoveDirection.y);
+        Vector3 y = Vector3.Dot(velocity, playerInfo.Normal) * playerInfo.Normal;
+        Vector3 moveDir = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y);
         Vector3 horizontalCameraDir = Camera.main.transform.forward;
         horizontalCameraDir.y = 0;
         horizontalCameraDir.Normalize();
@@ -92,7 +95,7 @@ public class GroundedState : PlayerState
 
         moveDir = CameraRotation * moveDir;
 
-        velocity = Vector3.MoveTowards(velocity, moveDir * maxSpeed, acceleration * Time.deltaTime);
+        velocity = Vector3.MoveTowards(velocity, Quaternion.FromToRotation(Vector3.up, playerInfo.Normal) * moveDir * maxSpeed + y, acceleration * Time.deltaTime);
 
         rb.AddForce((velocity - rb.velocity) / Time.deltaTime);
 
@@ -103,7 +106,7 @@ public class GroundedState : PlayerState
 
     public void CheckGrounded()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(rb.position + playerInfo.Normal * 0.05f, Vector3.down);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 1.2f))
         {
@@ -114,7 +117,6 @@ public class GroundedState : PlayerState
             else
             {
                 playerInfo.Normal = Vector3.down;
-                SnapToGround();
             }
         }
         else
@@ -126,7 +128,7 @@ public class GroundedState : PlayerState
     protected void SnapToGround()
     {
         RaycastHit hitInfo;
-        Ray ray = new Ray(transform.position + -playerInfo.Normal * (playerInfo.currentCollider.height * 0.5f - playerInfo.currentCollider.radius - 0.05f), Vector3.down);
+        Ray ray = new Ray(rb.transform.position - rb.transform.up * (capsuleCollider.height * 0.5f - capsuleCollider.radius - 0.05f), Vector3.down);
 
         float raydistance = 2f;
 
@@ -136,13 +138,14 @@ public class GroundedState : PlayerState
             return;
         }*/
 
-        if (Physics.SphereCast(ray, playerInfo.currentCollider.radius, out hitInfo, raydistance, groundMask, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(ray, capsuleCollider.radius, out hitInfo, raydistance, groundMask, QueryTriggerInteraction.Ignore))
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.cyan, 1);
             //transform.position = transform.position + transform.up * (-Vector3.Dot(transform.up, transform.position) + Vector3.Dot(transform.up, hitInfo.point) + currentCollider.height * 0.5f + BUFFER_DIST);
-            transform.position -= transform.up * (hitInfo.distance - 0.05f);
+
+            rb.position = new Vector3(rb.position.x, hitInfo.point.y + 0.05f + capsuleCollider.height * 0.5f, rb.position.z);
             playerInfo.Normal = hitInfo.normal.normalized;
-            //rb.velocity = Vector3.ProjectOnPlane(rb.velocity, Normal).normalized * rb.velocity.magnitude;
+            rb.velocity = Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal);
             //rb.velocity -= Normal * Vector3.Dot(rb.velocity, Normal);
             //rb.velocity -= GravityDir.normalized * Vector3.Dot(rb.velocity, GravityDir.normalized);
         }

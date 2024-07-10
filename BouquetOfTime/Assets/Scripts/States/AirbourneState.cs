@@ -26,7 +26,7 @@ public class AirbourneState : PlayerState
         RaycastHit hitInfo;
         if(Physics.Raycast(ray, out hitInfo, 1.5f))
         {
-            if(hitInfo.normal.y > 0.6f)
+            if(hitInfo.normal.y > 0.6f && rb.velocity.y < 0)
             {
                 ExitGrounded();
             }
