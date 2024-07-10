@@ -22,11 +22,11 @@ public class AirbourneState : PlayerState
 
     public void CheckGrounded()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(rb.position - rb.transform.up, Vector3.down);
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo, 1.5f))
+        if(Physics.Raycast(ray, out hitInfo, 0.08f))
         {
-            if(hitInfo.normal.y > 0.6f)
+            if(hitInfo.normal.y > 0.6f && rb.velocity.y < 0)
             {
                 ExitGrounded();
             }

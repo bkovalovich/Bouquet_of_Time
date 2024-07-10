@@ -23,6 +23,7 @@ public class StateMachine : MonoBehaviour
         foreach (PlayerState state in GetComponentsInChildren<PlayerState>())
         {
             state.playerInfo = playerInfo;
+            state.gameObject.SetActive(false);
         }
     }
 
@@ -45,6 +46,7 @@ public class StateMachine : MonoBehaviour
 
     public void TransitionTo(PlayerState state)
     {
+        state.gameObject.SetActive(true);
         state.EnterState(currentState);
         currentState = state;
     }

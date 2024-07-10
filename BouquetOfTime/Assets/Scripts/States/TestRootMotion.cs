@@ -7,6 +7,7 @@ public class TestRootMotion : MonoBehaviour
 
     public Rigidbody rb;
     public Animator animator;
+    [SerializeField] PlayerInfoSO playerInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,12 @@ public class TestRootMotion : MonoBehaviour
     void Update()
     {
         //make this framerate independent
-        animator.SetFloat("Speed", Mathf.Lerp(animator.GetFloat("Speed"), rb.velocity.magnitude * 0.07f, 1 - Mathf.Pow(0.005f, Time.deltaTime)));
+        animator.SetFloat("Velocity", rb.velocity.magnitude);
+        animator.SetFloat("VelocityX", rb.velocity.x);
+        animator.SetFloat("VelocityY", rb.velocity.y);
+        animator.SetFloat("VelocityZ", rb.velocity.z);
+        animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
+
     }
 
     private void OnAnimatorMove()

@@ -23,6 +23,7 @@ public abstract class PlayerState : MonoBehaviour
     public void ExitState()
     {
         OnExit?.Invoke();
+        gameObject.SetActive(false);
     }
 
     public UnityEvent<PlayerState> OnEnter;
