@@ -1795,6 +1795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3279164360200168544}
   animator: {fileID: 1611088472708664203}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
 --- !u!1001 &7534127282770754905
 PrefabInstance:
   m_ObjectHideFlags: 0
