@@ -84,7 +84,8 @@ public class GroundedState : PlayerState
         if (jump)
         {
             jump = false;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(-Vector3.Dot(rb.velocity, rb.transform.up) * rb.transform.up);
+            rb.AddForce(rb.transform.up * jumpForce, ForceMode.Impulse);
             ExitAirbourne();
         }
     }
