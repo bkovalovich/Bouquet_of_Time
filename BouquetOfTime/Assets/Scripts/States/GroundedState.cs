@@ -15,6 +15,10 @@ public class GroundedState : PlayerState
 
     public float acceleration;
 
+    [SerializeField] protected float JumpHeight = 3;
+
+    protected float jumpForce;
+
     public FloatVariableSO gravityMagnitude;
 
     [SerializeField] CapsuleCollider capsuleCollider;
@@ -24,10 +28,18 @@ public class GroundedState : PlayerState
 
     private bool jump;
 
+    public override void EnterState(PlayerState lastState)
+    {
+        base.EnterState(lastState);
+        playerInfo.Grounded = true;
+    }
+
     protected virtual void OnEnable()
     {
         input.OnJump += Jump;
         input.OnSprint += OnSprint;
+
+        jumpForce = MathF.Sqrt(2 * gravityMagnitude.Value * JumpHeight);
     }
 
     protected virtual void OnSprint(InputAction.CallbackContext context)
@@ -44,13 +56,6 @@ public class GroundedState : PlayerState
         if (context.started)
         {
             jump = true;
-        }
-        else if(context.canceled)
-        {
-            if(rb.velocity.y > 0)
-            {
-                rb.velocity *= 0.5f;
-            }
         }
     }
 
@@ -79,7 +84,8 @@ public class GroundedState : PlayerState
         if (jump)
         {
             jump = false;
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            rb.AddForce(-Vector3.Dot(rb.velocity, rb.transform.up) * rb.transform.up);
+            rb.AddForce(rb.transform.up * jumpForce, ForceMode.Impulse);
             ExitAirbourne();
         }
     }
@@ -163,15 +169,11 @@ public class GroundedState : PlayerState
 
     public void ExitAirbourne()
     {
-        ExitState();
-
         OnAirbourneExit?.Invoke();
     }
 
     public void ExitSprint()
     {
-        ExitState();
-
         OnSprintExit?.Invoke();
     }
 

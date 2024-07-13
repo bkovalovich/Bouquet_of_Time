@@ -22,13 +22,11 @@ public class SprintAttackState : PlayerState
 
     public override void PhysicsUpdate()
     {
-        rb.velocity /= 1.1f;
+        rb.velocity *= 0.95f;
     }
 
     protected virtual void ExitAttackFinished()
     {
-        ExitState();
-
         OnAttackFinishedExit?.Invoke();
     }
 }

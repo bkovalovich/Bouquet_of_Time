@@ -14,13 +14,13 @@ public abstract class PlayerState : MonoBehaviour
     public abstract void FrameUpdate();
     public abstract void PhysicsUpdate();
 
-    public void EnterState(PlayerState lastState)
+    public virtual void EnterState(PlayerState lastState)
     {
         OnEnter?.Invoke(lastState);
 
     }
 
-    public void ExitState()
+    public virtual void ExitState()
     {
         OnExit?.Invoke();
         gameObject.SetActive(false);
