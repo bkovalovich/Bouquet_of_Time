@@ -218,6 +218,8 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  maxSpeed: 10
+  acceleration: 25
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   OnGroundedExit:
     m_PersistentCalls:
@@ -814,6 +816,7 @@ MonoBehaviour:
     m_Bits: 1
   maxSpeed: 15
   acceleration: 50
+  JumpHeight: 3
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   capsuleCollider: {fileID: 6615434221915645737}
   OnAirbourneExit:
@@ -972,7 +975,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   maxSpeed: 8
-  acceleration: 40
+  acceleration: 50
+  JumpHeight: 3
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   capsuleCollider: {fileID: 6615434221915645737}
   OnAirbourneExit:
