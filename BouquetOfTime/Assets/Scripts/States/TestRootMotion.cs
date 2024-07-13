@@ -16,15 +16,26 @@ public class TestRootMotion : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //make this framerate independent
+        /*animator.SetFloat("Velocity", rb.velocity.magnitude);
+        animator.SetFloat("VelocityX", rb.velocity.x);
+        animator.SetFloat("VelocityY", rb.velocity.y);
+        animator.SetFloat("VelocityZ", rb.velocity.z);
+        animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
+        animator.SetBool("Grounded", playerInfo.Grounded);*/
+
+    }
+
+    private void LateUpdate()
+    {
         animator.SetFloat("Velocity", rb.velocity.magnitude);
         animator.SetFloat("VelocityX", rb.velocity.x);
         animator.SetFloat("VelocityY", rb.velocity.y);
         animator.SetFloat("VelocityZ", rb.velocity.z);
         animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
-
+        animator.SetBool("Grounded", playerInfo.Grounded);
     }
 
     private void OnAnimatorMove()

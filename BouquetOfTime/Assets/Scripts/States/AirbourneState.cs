@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,13 @@ public class AirbourneState : PlayerState
     public FloatVariableSO gravityMagnitude;
 
     public UnityEvent OnGroundedExit;
+
+    public override void EnterState(PlayerState lastState)
+    {
+        base.EnterState(lastState);
+
+        playerInfo.Grounded = false;
+    }
 
     public override void FrameUpdate()
     {
@@ -35,8 +43,6 @@ public class AirbourneState : PlayerState
 
     public void ExitGrounded()
     {
-        ExitState();
-
         OnGroundedExit?.Invoke();
     }
 }

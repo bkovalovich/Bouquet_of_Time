@@ -27,8 +27,6 @@ public class SprintAttackState : PlayerState
 
     protected virtual void ExitAttackFinished()
     {
-        ExitState();
-
         OnAttackFinishedExit?.Invoke();
     }
 }

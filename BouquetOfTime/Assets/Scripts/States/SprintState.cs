@@ -52,8 +52,6 @@ public class SprintState : GroundedState
 
     protected void ExitAttack()
     {
-        ExitState();
-
         OnAttackExit?.Invoke();
     }
 }

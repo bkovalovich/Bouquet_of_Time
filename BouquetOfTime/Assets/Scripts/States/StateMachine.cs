@@ -46,6 +46,10 @@ public class StateMachine : MonoBehaviour
 
     public void TransitionTo(PlayerState state)
     {
+        if (currentState)
+        {
+            currentState.ExitState();
+        }
         state.gameObject.SetActive(true);
         state.EnterState(currentState);
         currentState = state;
