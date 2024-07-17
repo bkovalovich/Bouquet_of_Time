@@ -84,7 +84,7 @@ public class GroundedState : PlayerState
         if (jump)
         {
             jump = false;
-            rb.AddForce(-Vector3.Dot(rb.velocity, rb.transform.up) * rb.transform.up);
+            
             rb.AddForce(rb.transform.up * jumpForce, ForceMode.Impulse);
             ExitAirbourne();
         }
@@ -117,7 +117,7 @@ public class GroundedState : PlayerState
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 1.2f))
         {
-            if (hitInfo.normal.y > 0.6f)
+            if (hitInfo.normal.y > 0.5f)
             {
                 playerInfo.Normal = hitInfo.normal;
             }
@@ -147,7 +147,7 @@ public class GroundedState : PlayerState
 
         if (Physics.SphereCast(ray, capsuleCollider.radius, out hitInfo, raydistance, groundMask, QueryTriggerInteraction.Ignore))
         {
-            if(Vector3.Dot(rb.transform.up, hitInfo.normal) < 0.8f)
+            if(Vector3.Dot(rb.transform.up, hitInfo.normal) < 0.6f)
             {
                 ExitAirbourne();
                 return;
@@ -169,6 +169,7 @@ public class GroundedState : PlayerState
 
     public void ExitAirbourne()
     {
+        rb.AddForce(-Vector3.Dot(rb.velocity, rb.transform.up) * rb.transform.up * 0.75f, ForceMode.Impulse);
         OnAirbourneExit?.Invoke();
     }
 

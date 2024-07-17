@@ -46,7 +46,7 @@ public class AirbourneState : PlayerState
         RaycastHit hitInfo;
         if(Physics.Raycast(ray, out hitInfo, 0.1f))
         {
-            if(hitInfo.normal.y > 0.6f && rb.velocity.y < 0)
+            if(hitInfo.normal.y > 0.4f && rb.velocity.y < 0)
             {
                 ExitGrounded();
             }
@@ -55,7 +55,6 @@ public class AirbourneState : PlayerState
 
     protected virtual void Move()
     {
-        
         Vector3 velocity = rb.velocity;
         Vector3 horizontalVelocity = Vector3.ProjectOnPlane(velocity, playerInfo.Normal);
         targetSpeed = horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed? enterSpeed : maxSpeed;
