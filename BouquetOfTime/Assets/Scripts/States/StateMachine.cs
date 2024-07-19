@@ -2,56 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+namespace Bouquet
 {
-    [SerializeField] PlayerInfoSO playerInfo;
-
-    [SerializeField] PlayerState defaultState;
-
-    [SerializeField] PlayerState currentState;
-
-    
-
-    private void OnEnable()
+    public class StateMachine : State
     {
-        if(!playerInfo)
+        protected State _currentState;
+        public virtual State CurrentState => _currentState;
+
+        public State DefaultState;
+
+        public override void FrameUpdate()
         {
-            playerInfo = new PlayerInfoSO();
+            if(CurrentState == null)
+            {
+                _currentState = DefaultState;
+            } 
+            _currentState.FrameUpdate();
         }
-        playerInfo.rb = GetComponentInParent<Rigidbody>();
-        Debug.Log(playerInfo.rb);
-        foreach (PlayerState state in GetComponentsInChildren<PlayerState>())
+
+        public override void PhysicsUpdate()
         {
-            state.playerInfo = playerInfo;
-            state.gameObject.SetActive(false);
+            if (CurrentState == null)
+            {
+                _currentState = DefaultState;
+            }
+            _currentState.PhysicsUpdate();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        TransitionTo(defaultState);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currentState.FrameUpdate();
-    }
-
-    private void FixedUpdate()
-    {
-        currentState.PhysicsUpdate(); 
-    }
-
-    public void TransitionTo(PlayerState state)
-    {
-        if (currentState)
-        {
-            currentState.ExitState();
-        }
-        state.gameObject.SetActive(true);
-        state.EnterState(currentState);
-        currentState = state;
     }
 }

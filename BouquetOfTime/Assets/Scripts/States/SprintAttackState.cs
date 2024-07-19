@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SprintAttackState : PlayerState
+namespace Bouquet
 {
-
-    public UnityEvent OnAttackFinishedExit;
-
-    [SerializeField] Animator animator;
-
-    protected virtual void OnEnable()
+    public class SprintAttackState : PlayerState
     {
-        animator.CrossFade("SprintAttack", 0.25f);
-    }
 
-    public override void FrameUpdate()
-    {
-        
-    }
+        public UnityEvent OnAttackFinishedExit;
 
-    public override void PhysicsUpdate()
-    {
-        rb.velocity *= 0.95f;
-    }
+        [SerializeField] Animator animator;
 
-    protected virtual void ExitAttackFinished()
-    {
-        OnAttackFinishedExit?.Invoke();
+        protected virtual void OnEnable()
+        {
+            animator.CrossFade("SprintAttack", 0.25f);
+        }
+
+        public override void FrameUpdate()
+        {
+
+        }
+
+        public override void PhysicsUpdate()
+        {
+            rb.velocity *= 0.95f;
+        }
+
+        protected virtual void ExitAttackFinished()
+        {
+            OnAttackFinishedExit?.Invoke();
+        }
     }
 }

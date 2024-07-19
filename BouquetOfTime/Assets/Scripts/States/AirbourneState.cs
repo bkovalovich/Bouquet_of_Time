@@ -5,76 +5,83 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AirbourneState : PlayerState
+namespace Bouquet
 {
-    [SerializeField] protected float maxSpeed;
-
-    protected float targetSpeed;
-
-    protected float enterSpeed;
-
-    public float acceleration;
-
-    public FloatVariableSO gravityMagnitude;
-
-    public UnityEvent OnGroundedExit;
-
-    public override void EnterState(PlayerState lastState)
+    public class AirbourneState : PlayerState
     {
-        base.EnterState(lastState);
+        [SerializeField] protected float maxSpeed;
 
-        playerInfo.Grounded = false;
-        playerInfo.Normal = rb.transform.up;
-        enterSpeed = (rb.velocity -  playerInfo.Normal * Vector3.Dot(playerInfo.Normal, rb.velocity)).magnitude;
-    }
+        protected float targetSpeed;
 
-    public override void FrameUpdate()
-    {
-        CheckGrounded();
-    }
+        protected float enterSpeed;
 
-    public override void PhysicsUpdate()
-    {
-        rb.AddForce(Vector3.down * gravityMagnitude, ForceMode.Acceleration);
+        public float acceleration;
 
-        Move();
-    }
+        public FloatVariableSO gravityMagnitude;
 
-    public void CheckGrounded()
-    {
-        Ray ray = new Ray(rb.position - rb.transform.up, Vector3.down);
-        RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo, 0.1f))
+        public UnityEvent OnGroundedExit;
+
+        public override void EnterState()
         {
-            if(hitInfo.normal.y > 0.4f && rb.velocity.y < 0)
+            base.EnterState();
+
+            playerInfo.Grounded = false;
+            playerInfo.Normal = rb.transform.up;
+            enterSpeed = (rb.velocity - playerInfo.Normal * Vector3.Dot(playerInfo.Normal, rb.velocity)).magnitude;
+        }
+
+        public override void FrameUpdate()
+        {
+            CheckGrounded();
+        }
+
+        public override void PhysicsUpdate()
+        {
+            rb.AddForce(Vector3.down * gravityMagnitude, ForceMode.Acceleration);
+
+            Move();
+        }
+
+        public void CheckGrounded()
+        {
+            Ray ray = new Ray(rb.position - rb.transform.up * 0.9f, -rb.transform.up);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(ray, out hitInfo, 0.2f))
             {
-                ExitGrounded();
+                Debug.DrawLine(ray.origin, hitInfo.point, Color.cyan, 1);
+                if (Vector3.Dot(rb.transform.up, hitInfo.normal) >= 0.5f && rb.velocity.y <= 0)
+                {
+                    ExitGrounded();
+                }
             }
         }
-    }
 
-    protected virtual void Move()
-    {
-        Vector3 velocity = rb.velocity;
-        Vector3 horizontalVelocity = Vector3.ProjectOnPlane(velocity, playerInfo.Normal);
-        targetSpeed = horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed? enterSpeed : maxSpeed;
-        Vector3 y = Vector3.Dot(velocity, playerInfo.Normal) * playerInfo.Normal;
-        Vector3 moveDir = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y);
-        Vector3 horizontalCameraDir = Camera.main.transform.forward;
-        horizontalCameraDir.y = 0;
-        horizontalCameraDir.Normalize();
-        Quaternion CameraRotation = Quaternion.FromToRotation(Vector3.forward, horizontalCameraDir);
+        protected virtual void Move()
+        {
+            Vector3 velocity = rb.velocity;
+            Vector3 horizontalVelocity = Vector3.ProjectOnPlane(velocity, playerInfo.Normal);
+            targetSpeed = horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed ? enterSpeed : maxSpeed;
+            Vector3 y = Vector3.Dot(velocity, playerInfo.Normal) * playerInfo.Normal;
+            Vector3 moveDir = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y);
+            Vector3 horizontalCameraDir = Camera.main.transform.forward;
+            horizontalCameraDir.y = 0;
+            horizontalCameraDir.Normalize();
+            Quaternion CameraRotation = Quaternion.FromToRotation(Vector3.forward, horizontalCameraDir);
 
-        moveDir = CameraRotation * moveDir;
+            moveDir = CameraRotation * moveDir;
 
-        velocity = Vector3.MoveTowards(velocity, Quaternion.FromToRotation(Vector3.up, playerInfo.Normal) * moveDir * targetSpeed + y, acceleration * Time.deltaTime);
+            velocity = Vector3.MoveTowards(velocity, Quaternion.FromToRotation(Vector3.up, playerInfo.Normal) * moveDir * targetSpeed + y, acceleration * Time.deltaTime);
 
-        rb.AddForce((velocity - rb.velocity) / Time.deltaTime);
+            rb.AddForce((velocity - rb.velocity) / Time.deltaTime);
 
-    }
+        }
 
-    public void ExitGrounded()
-    {
-        OnGroundedExit?.Invoke();
+        public void ExitGrounded()
+        {
+            playerInfo.Grounded = true;
+            Debug.Log("ExitGrounded");
+            GetComponentInParent<PlayerStateMachine>().ChangeStates();
+            //OnGroundedExit?.Invoke();
+        }
     }
 }

@@ -163,9 +163,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5b54c7bdd83d64f871a2375f33b372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  DefaultState: {fileID: 2440844564634508649}
+  _input: {fileID: 0}
   playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
-  defaultState: {fileID: 2440844564634508649}
-  currentState: {fileID: 0}
+  rb: {fileID: 3279164360200168544}
+  groundedState: {fileID: 0}
+  airbourneState: {fileID: 0}
+  sprintState: {fileID: 0}
+  sprintAttackState: {fileID: 0}
 --- !u!1 &2034087030937377272
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,32 +221,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff3d4947f277a6428c6a476f66bebb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
-  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   maxSpeed: 3
   acceleration: 15
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   OnGroundedExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7537746970952087900}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2891686603174113354
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,8 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996ba258226957745a252d608f119989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
-  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   OnEnter:
     m_PersistentCalls:
       m_Calls:
@@ -333,21 +330,11 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   OnAttackFinishedExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7537746970952087900}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   animator: {fileID: 1611088472708664203}
 --- !u!1 &5568971954434265891
 GameObject:
@@ -803,14 +790,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417d62d6f21852f44872cedaae019e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
-  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -821,49 +808,13 @@ MonoBehaviour:
   capsuleCollider: {fileID: 6615434221915645737}
   OnAirbourneExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2440844564634508649}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSprintExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7537746970952087900}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnAttackExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7763019836251309576}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &8371613059769268550
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,14 +914,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ac6aefc3dd5864190cbb4696283fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
-  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -981,34 +932,10 @@ MonoBehaviour:
   capsuleCollider: {fileID: 6615434221915645737}
   OnAirbourneExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2440844564634508649}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSprintExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 923542956017690078}
-        m_TargetAssemblyTypeName: StateMachine, Assembly-CSharp
-        m_MethodName: TransitionTo
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3110112783551851948}
-          m_ObjectArgumentAssemblyTypeName: PlayerState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &1573281265016969037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.64279747
+      value: -0.6048151
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1051,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.60100937
+      value: -0.63921726
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1095,19 +1022,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30460995
+      value: 0.7108188
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.25637943
+      value: 0.59827113
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70182335
+      value: 0.28298366
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.59069985
+      value: -0.23817733
       objectReference: {fileID: 0}
     - target: {fileID: 4218501288494784496, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_Name
@@ -1163,19 +1090,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30922306
+      value: 0.7215834
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.25079644
+      value: 0.5852428
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7124517
+      value: 0.2872693
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.57783633
+      value: -0.23299073
       objectReference: {fileID: 0}
     - target: {fileID: 6609457848182515959, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_BindingMode
@@ -1203,19 +1130,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.3137218
+      value: 0.73208183
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.24514525
+      value: 0.57205576
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7228173
+      value: 0.29144904
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5648164
+      value: -0.22774108
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8323061443361124007, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}

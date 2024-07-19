@@ -4,54 +4,57 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class SprintState : GroundedState
+namespace Bouquet
 {
-    public UnityEvent OnAttackExit;
-
-    protected override void OnEnable()
+    public class SprintState : GroundedState
     {
-        base.OnEnable();
+        public UnityEvent OnAttackExit;
 
-        input.OnPrimaryAttack += OnAttack;
-    }
-
-    protected void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.started)
+        protected override void OnEnable()
         {
-            ExitAttack();
+            base.OnEnable();
+
+            input.OnPrimaryAttack += OnAttack;
         }
-    }
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        input.OnPrimaryAttack -= OnAttack;
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-
-        if(rb.velocity.sqrMagnitude < 0.5f)
+        protected void OnAttack(InputAction.CallbackContext context)
         {
-            ExitSprint();
+            if (context.started)
+            {
+                ExitAttack();
+            }
         }
-    }
 
-    protected override void OnSprint(InputAction.CallbackContext context)
-    {
-        Debug.Log("Exitting Sprint because the button was released");
-        if (context.canceled)
+        protected override void OnDisable()
         {
-            ExitSprint();
+            base.OnDisable();
+            input.OnPrimaryAttack -= OnAttack;
         }
-    }
 
-    
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
 
-    protected void ExitAttack()
-    {
-        OnAttackExit?.Invoke();
+            if (rb.velocity.sqrMagnitude < 0.5f)
+            {
+                ExitSprint();
+            }
+        }
+
+        protected override void OnSprint(InputAction.CallbackContext context)
+        {
+            Debug.Log("Exitting Sprint because the button was released");
+            if (context.canceled)
+            {
+                ExitSprint();
+            }
+        }
+
+
+
+        protected void ExitAttack()
+        {
+            OnAttackExit?.Invoke();
+        }
     }
 }
