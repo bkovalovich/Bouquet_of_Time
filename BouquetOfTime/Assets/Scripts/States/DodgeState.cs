@@ -13,13 +13,12 @@ namespace Bouquet
         [SerializeField] float dodgeTime;
         [SerializeField] float directionInputTime;
 
-        protected Vector2 inputDir;
+        protected Vector3 projectedInput;
 
         [SerializeField] EventSO dodgeFinishedEvent;
 
         protected virtual void OnEnable()
         {
-            animator.CrossFade("Dodge", 0.25f);
             dodgeFinishedEvent.Subscribe(OnDodgeFinished);
         }
 
@@ -36,30 +35,41 @@ namespace Bouquet
         public override void EnterState()
         {
             base.EnterState();
-            Vector3 projectedInput = Vector3.forward;
-            projectedInput = Camera.main.transform.rotation * projectedInput;
-            inputDir = new Vector2(projectedInput.x, projectedInput.y).normalized;
+            animator.CrossFade("Dodge", 0.25f);
+
+            projectedInput = input.MoveDirection.sqrMagnitude > 0 ? new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y).normalized : Vector3.forward;
+            Vector3 CameraForward = Camera.main.transform.forward;
+            CameraForward = Vector3.ProjectOnPlane(CameraForward, rb.transform.up).normalized;
+            projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
+            projectedInput.Normalize();
+
         }
 
         public override void FrameUpdate()
         {
             if(Time.time - timeEntered > directionInputTime && input.MoveDirection.sqrMagnitude > 0)
             {
-                Vector3 projectedInput = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y);
-                projectedInput = Camera.main.transform.rotation * projectedInput;
-                inputDir = new Vector2(projectedInput.x, projectedInput.y).normalized;
+                projectedInput = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y).normalized;
+                Vector3 CameraForward = Camera.main.transform.forward;
+                CameraForward = Vector3.ProjectOnPlane(CameraForward, rb.transform.up).normalized;
+                projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
+                projectedInput.Normalize();
+                float y = rb.velocity.y;
+                rb.velocity = projectedInput * ((rb.velocity - rb.transform.up * y).magnitude);
+                rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
             }
 
             Transform roll = model.GetChild(0).GetChild(0).GetChild(0);
-
-            roll.localRotation = Quaternion.FromToRotation(Vector3.forward, new Vector3(inputDir.x, 0, inputDir.y));
+            Debug.DrawRay(transform.position, projectedInput * 2, Color.yellow);
+            roll.localRotation = Quaternion.LookRotation(projectedInput, rb.transform.up);
         }
 
         public override void PhysicsUpdate()
         {
             rb.AddForce(Vector3.down * 12, ForceMode.Acceleration);
-
+            float y = rb.velocity.y;
             rb.velocity *= 0.95f;
+            rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
         }
     }
 }
