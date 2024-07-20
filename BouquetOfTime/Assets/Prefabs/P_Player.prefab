@@ -149,6 +149,7 @@ Transform:
   - {fileID: 6275542211176135181}
   - {fileID: 7768624979146982682}
   - {fileID: 5446576958814931142}
+  - {fileID: 3043178759933843401}
   m_Father: {fileID: 5276362882607514410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &923542956017690078
@@ -177,6 +178,64 @@ MonoBehaviour:
   groundedState: {fileID: 7537746970952087900}
   sprintState: {fileID: 3110112783551851948}
   sprintAttackState: {fileID: 7763019836251309576}
+  dodgeState: {fileID: 4432861129760844868}
+--- !u!1 &2015603519511098042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3043178759933843401}
+  - component: {fileID: 4432861129760844868}
+  m_Layer: 0
+  m_Name: DodgeState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3043178759933843401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015603519511098042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5709345585684112504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4432861129760844868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015603519511098042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a9fae3a9373c54bab02098ab79ae8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
+  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
+  animator: {fileID: 1611088472708664203}
+  model: {fileID: 736547169514439742}
+  dodgeTime: 0
+  directionInputTime: 0.15
+  dodgeFinishedEvent: {fileID: 11400000, guid: 15920a5e017104847b75964984278838, type: 2}
 --- !u!1 &2034087030937377272
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +740,19 @@ MonoBehaviour:
     m_ActionId: c171e18d-2972-48b2-a226-b4ed81ec900e
     m_ActionName: PlayerActions/SecondaryAttack[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3955508738405144426}
+        m_TargetAssemblyTypeName: InputProvider, Assembly-CSharp
+        m_MethodName: OnDodge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0393ffdb-284c-4ea2-b736-789eec864c1f
     m_ActionName: PlayerMove/Dodge[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 1
@@ -943,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6427971
+      value: -0.24940109
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -951,7 +1022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.60100913
+      value: -0.84391785
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -995,19 +1066,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30460992
+      value: 0.7571943
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.25637946
+      value: 0.6373038
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7018233
+      value: 0.10954427
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5907
+      value: -0.09219957
       objectReference: {fileID: 0}
     - target: {fileID: 4218501288494784496, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_Name
@@ -1063,19 +1134,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.30922285
+      value: 0.76866126
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.2507962
+      value: 0.6234254
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7124518
+      value: 0.1112031
       objectReference: {fileID: 0}
     - target: {fileID: 6047562649679710771, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.57783645
+      value: -0.090191655
       objectReference: {fileID: 0}
     - target: {fileID: 6609457848182515959, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_BindingMode
@@ -1103,19 +1174,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.313722
+      value: 0.7798446
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.24514535
+      value: 0.6093782
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7228173
+      value: 0.112821005
       objectReference: {fileID: 0}
     - target: {fileID: 8096422107764111491, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5648163
+      value: -0.08815943
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8323061443361124007, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
@@ -1283,8 +1354,8 @@ MonoBehaviour:
   m_BindingMode: 5
   m_FollowOffset: {x: 0, y: 5.08, z: -0.88}
   m_XDamping: 1
-  m_YDamping: 2
-  m_ZDamping: 1
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0

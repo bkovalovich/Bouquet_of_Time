@@ -17,6 +17,7 @@ namespace Bouquet
         [SerializeField] GroundedState groundedState;
         [SerializeField] SprintState sprintState;
         [SerializeField] SprintAttackState sprintAttackState;
+        [SerializeField] DodgeState dodgeState;
 
         private bool trySprint;
         private bool tryAttack;
@@ -46,6 +47,19 @@ namespace Bouquet
         {
             _input.OnSprint += OnSprint;
             _input.OnPrimaryAttack += OnAttack;
+            _input.OnDodge += OnDodge;
+        }
+
+        private void OnDodge(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                tryDodge = true;
+            }
+            if (context.canceled)
+            {
+                tryDodge = false;
+            }
         }
 
         private void OnAttack(InputAction.CallbackContext context)
@@ -143,6 +157,12 @@ namespace Bouquet
             {
                 tryAttack = false;
                 TransitionTo(sprintAttackState);
+            }
+
+            if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState))
+            {
+                tryDodge = false;
+                TransitionTo(dodgeState);
             }
         }
     }

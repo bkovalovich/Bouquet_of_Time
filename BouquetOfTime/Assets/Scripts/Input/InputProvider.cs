@@ -60,4 +60,10 @@ public class InputProvider : MonoBehaviour
         //Debug.Log("SecondaryAttack? " + context.started);
         input.OnSecondaryAttack?.Invoke(context);
     }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        input.OnDodge?.Invoke(context);
+
+    }
 }

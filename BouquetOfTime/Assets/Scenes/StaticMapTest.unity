@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17412767, g: 0.2177478, b: 0.2999444, a: 1}
+  m_IndirectSpecularColor: {r: 0.1741276, g: 0.2177477, b: 0.29994428, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -531,6 +531,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.84391785
       objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1971271572}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDodge
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputProvider, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 682778988043821534, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7571943
@@ -547,6 +575,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.09219957
       objectReference: {fileID: 0}
+    - target: {fileID: 4255251904483877368, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.76866126
@@ -557,11 +589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.1112031
+      value: 0.111203104
       objectReference: {fileID: 0}
     - target: {fileID: 5059839028695227774, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.090191655
+      value: -0.09019166
       objectReference: {fileID: 0}
     - target: {fileID: 5276362882607514410, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -709,6 +741,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ba969e5d70acd4baf94d126961d359, type: 3}
+--- !u!114 &1971271572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3955508738405144426, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+  m_PrefabInstance: {fileID: 1262124923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdec1d1d63d566045bf125c9823a16fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2064039866
 PrefabInstance:
   m_ObjectHideFlags: 0
