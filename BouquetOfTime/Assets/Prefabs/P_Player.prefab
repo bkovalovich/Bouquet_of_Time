@@ -232,9 +232,6 @@ MonoBehaviour:
   maxSpeed: 3
   acceleration: 15
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
-  OnGroundedExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2891686603174113354
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,30 +311,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1611088472708664203}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: SprintAttack
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnExit:
     m_PersistentCalls:
       m_Calls: []
   input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
   playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   animator: {fileID: 1611088472708664203}
-  gravityMagnitude: {fileID: 0}
-  attackFinishedEvent: {fileID: 0}
-  OnAttackFinishedExit:
-    m_PersistentCalls:
-      m_Calls: []
+  gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
+  attackFinishedEvent: {fileID: 11400000, guid: 15920a5e017104847b75964984278838, type: 2}
 --- !u!1 &5568971954434265891
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,15 +794,6 @@ MonoBehaviour:
   JumpHeight: 2
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   capsuleCollider: {fileID: 6615434221915645737}
-  OnAirbourneExit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSprintExit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAttackExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8371613059769268550
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,12 +909,6 @@ MonoBehaviour:
   JumpHeight: 2.5
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   capsuleCollider: {fileID: 6615434221915645737}
-  OnAirbourneExit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSprintExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1573281265016969037
 PrefabInstance:
   m_ObjectHideFlags: 0

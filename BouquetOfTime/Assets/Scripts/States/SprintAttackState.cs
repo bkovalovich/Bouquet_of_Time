@@ -16,8 +16,6 @@ namespace Bouquet
 
         [SerializeField] EventSO attackFinishedEvent;
 
-        public UnityEvent OnAttackFinishedExit;
-
         protected virtual void OnEnable()
         {
             animator.CrossFade("SprintAttack", 0.25f);
@@ -48,7 +46,7 @@ namespace Bouquet
 
         protected virtual void ExitAttackFinished()
         {
-            OnAttackFinishedExit?.Invoke();
+            GetComponentInParent<PlayerStateMachine>().TransitionOut();
         }
     }
 }

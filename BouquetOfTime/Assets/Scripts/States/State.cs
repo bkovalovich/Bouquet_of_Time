@@ -7,11 +7,14 @@ namespace Bouquet
 {
     public abstract class State : MonoBehaviour
     {
+        protected double timeEntered;
+
         public abstract void FrameUpdate();
         public abstract void PhysicsUpdate();
 
         public virtual void EnterState()
         {
+            timeEntered = Time.time;
             OnEnter?.Invoke();
         }
 

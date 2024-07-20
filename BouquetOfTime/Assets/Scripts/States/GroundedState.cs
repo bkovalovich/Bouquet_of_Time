@@ -25,9 +25,6 @@ namespace Bouquet
 
         [SerializeField] CapsuleCollider capsuleCollider;
 
-        public UnityEvent OnAirbourneExit;
-        public UnityEvent OnSprintExit;
-
         private bool jump;
 
         public override void EnterState()
@@ -38,19 +35,10 @@ namespace Bouquet
         protected virtual void OnEnable()
         {
             input.OnJump += Jump;
-            input.OnSprint += OnSprint;
 
             jumpForce = MathF.Sqrt(2 * gravityMagnitude.Value * JumpHeight);
         }
 
-        protected virtual void OnSprint(InputAction.CallbackContext context)
-        {
-            Debug.Log("EXITED GROUNDED TO SPRINT");
-            if (context.performed)
-            {
-                ExitSprint();
-            }
-        }
 
         protected void Jump(InputAction.CallbackContext context)
         {
@@ -64,19 +52,17 @@ namespace Bouquet
         protected virtual void OnDisable()
         {
             input.OnJump -= Jump;
-            input.OnSprint -= OnSprint;
         }
 
         public override void FrameUpdate()
         {
-
-            DoJump();
         }
 
         public override void PhysicsUpdate()
         {
             Move();
             SnapToGround();
+            DoJump();
         }
 
         protected virtual void DoJump()
@@ -173,11 +159,6 @@ namespace Bouquet
             playerInfo.Grounded = false;
             rb.AddForce(-Vector3.Dot(rb.velocity, rb.transform.up) * rb.transform.up * 0.75f, ForceMode.Impulse);
             GetComponentInParent<PlayerStateMachine>().ChangeStates();
-        }
-
-        public void ExitSprint()
-        {
-            OnSprintExit?.Invoke();
         }
 
 

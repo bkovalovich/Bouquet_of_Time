@@ -25,6 +25,19 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-6652498284553775154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70381ec0d670ea41a0f7ad54abe2a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calledEvent: {fileID: 11400000, guid: 15920a5e017104847b75964984278838, type: 2}
 --- !u!206 &-6514417527304483769
 BlendTree:
   m_ObjectHideFlags: 1
@@ -52,7 +65,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4587730354154328279}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -6652498284553775154}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -100,9 +114,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2
+  m_TransitionDuration: 0.3263598
   m_TransitionOffset: 0
-  m_ExitTime: 0.68346494
+  m_ExitTime: 0.44207463
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -262,6 +276,19 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-956013011885851766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d198fc7bc6a374f930ea9fd3e69b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calledEvent: {fileID: 11400000, guid: 15920a5e017104847b75964984278838, type: 2}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -683,7 +710,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5660830591552470903}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -956013011885851766}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

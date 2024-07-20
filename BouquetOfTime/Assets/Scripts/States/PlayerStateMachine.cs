@@ -45,6 +45,19 @@ namespace Bouquet
         private void OnEnable()
         {
             _input.OnSprint += OnSprint;
+            _input.OnPrimaryAttack += OnAttack;
+        }
+
+        private void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.started) 
+            {
+                tryAttack = true;
+            }
+            if (context.canceled)
+            {
+                tryAttack = false;
+            }
         }
 
         private void OnSprint(InputAction.CallbackContext context)
@@ -62,6 +75,7 @@ namespace Bouquet
         private void OnDisable()
         {
             _input.OnSprint -= OnSprint;
+            _input.OnPrimaryAttack -= OnAttack;
 
         }
         #endregion
@@ -97,6 +111,12 @@ namespace Bouquet
             _currentState = state;
         }
 
+        public void TransitionOut()
+        {
+            TransitionTo(DefaultState);
+            ChangeStates();
+        }
+
         public void ChangeStates()
         {
             if(!playerInfo.Grounded)
@@ -121,6 +141,7 @@ namespace Bouquet
 
             if(tryAttack && CurrentState == sprintState)
             {
+                tryAttack = false;
                 TransitionTo(sprintAttackState);
             }
         }
