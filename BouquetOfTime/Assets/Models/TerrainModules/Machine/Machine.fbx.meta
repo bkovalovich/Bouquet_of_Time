@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 73d849c722b88dd47a044391087fc837
+guid: cbb826250d749844ca6ef9b3f72cef08
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Catwalk
+    second: {fileID: 2100000, guid: 9f33cd64660822749a786a0a299f87f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machine
+    second: {fileID: 2100000, guid: 840058a27e6ed88449121dffe4e7b3cc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

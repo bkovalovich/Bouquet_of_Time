@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ec5c5cab87892745974c0ec61fb8bcf
+guid: f8fad80d67050214782d1ec7857a592d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 9de531696ca7d454dafe7e040636d1dd, type: 2}
+      name: Catwalk
+    second: {fileID: 2100000, guid: 9f33cd64660822749a786a0a299f87f3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -75,9 +75,9 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 2
+    tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
