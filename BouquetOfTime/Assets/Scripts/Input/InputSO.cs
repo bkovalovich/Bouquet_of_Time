@@ -14,9 +14,14 @@ public class InputSO : ScriptableObject {
 
     public Action<InputAction.CallbackContext> OnJump;
 
+    public Action<InputAction.CallbackContext> OnDodge;
+
+
     public Action<InputAction.CallbackContext> OnInteract;
     public Action<InputAction.CallbackContext> OnPrimaryAttack;
     public Action<InputAction.CallbackContext> OnSecondaryAttack;
+
+
 
 
 

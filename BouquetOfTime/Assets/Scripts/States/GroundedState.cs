@@ -15,7 +15,7 @@ namespace Bouquet
 
         public float maxSpeed;
 
-        public float acceleration;
+        public float moveAcceleration;
 
         [SerializeField] protected float JumpHeight = 3;
 
@@ -27,6 +27,19 @@ namespace Bouquet
 
         private bool jump;
 
+        [Header("Visuals")]
+        [SerializeField] protected Transform modelParent;
+        protected Transform pitch;
+        protected Transform yaw;
+        protected Transform roll;
+
+        [SerializeField] float maxTiltAngle;
+        [SerializeField] float accelerationTiltSpeed;
+        [SerializeField] float velocityRotationSpeed;
+
+        private Vector3 previousVelocity;
+        private Vector3 acceleration;
+
         public override void EnterState()
         {
             base.EnterState();
@@ -37,6 +50,10 @@ namespace Bouquet
             input.OnJump += Jump;
 
             jumpForce = MathF.Sqrt(2 * gravityMagnitude.Value * JumpHeight);
+
+            pitch = modelParent.GetChild(0);
+            yaw = pitch.GetChild(0);
+            roll = yaw.GetChild(0);
         }
 
 
@@ -56,6 +73,51 @@ namespace Bouquet
 
         public override void FrameUpdate()
         {
+            //SolveModelRotation();
+
+            
+        }
+
+        protected virtual void SolveModelRotation()
+        {
+            Vector3 normalVelocity = rb.velocity.normalized;
+            Vector3 velocityCross = Vector3.Cross(normalVelocity, transform.up);
+
+            float tempForward = Vector3.Dot(acceleration, normalVelocity);
+            tempForward = tempForward / (maxTiltAngle * 2) * maxTiltAngle;
+            //tempForward = Mathf.Sqrt(Mathf.Abs(tempForward) * 40) * 0.3f * Mathf.Sign(tempForward);
+            float tempSideways = Vector3.Dot(acceleration, velocityCross);
+            tempSideways = tempSideways / (maxTiltAngle * 2) * maxTiltAngle;
+            //tempSideways = Mathf.Sqrt(Mathf.Abs(tempSideways) * 40) * 0.3f * Mathf.Sign(tempSideways);
+
+            var tilt = normalVelocity * tempForward + velocityCross * tempSideways;
+
+            float pitchMagnitude = Vector3.Dot(pitch.forward, tilt);
+            float yawMagnitude = Vector3.Dot(yaw.right, tilt);
+
+
+            /*pitch.localRotation = Quaternion.AngleAxis(pitchMagnitude, pitch.right);
+            yaw.localRotation = Quaternion.AngleAxis(-yawMagnitude, yaw.forward);*/
+            pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.AngleAxis(pitchMagnitude, modelParent.right), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
+            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.AngleAxis(-yawMagnitude, modelParent.forward), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
+
+
+            if (Vector3.Dot(rb.velocity.normalized, acceleration.normalized) < -0.4f)
+            {
+                return;
+            }
+
+            if (rb.velocity.sqrMagnitude > 0.1f)
+            {
+                Vector3 startForward = Vector3.ProjectOnPlane(pitch.forward + yaw.forward, transform.up).normalized;
+                Quaternion rollRotation = Quaternion.FromToRotation(startForward, (rb.velocity - (Vector3.Dot(Vector3.up, rb.velocity) * Vector3.up)).normalized);
+                roll.localRotation = Quaternion.Slerp(roll.localRotation, rollRotation, 1 - Mathf.Pow(velocityRotationSpeed, Time.deltaTime));
+                Debug.DrawRay(transform.position, rollRotation * Vector3.forward * 3, Color.yellow);
+            }
+            else
+            {
+                roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.Euler(0, roll.localRotation.eulerAngles.y, 0), 1 - Mathf.Pow(velocityRotationSpeed, Time.deltaTime));
+            }
         }
 
         public override void PhysicsUpdate()
@@ -63,6 +125,11 @@ namespace Bouquet
             Move();
             SnapToGround();
             DoJump();
+
+            SolveModelRotation();
+
+            acceleration = (rb.velocity - previousVelocity) / Time.deltaTime;
+            previousVelocity = rb.velocity;
         }
 
         protected virtual void DoJump()
@@ -88,7 +155,7 @@ namespace Bouquet
 
             moveDir = CameraRotation * moveDir;
 
-            velocity = Vector3.MoveTowards(velocity, Quaternion.FromToRotation(Vector3.up, playerInfo.Normal) * moveDir * maxSpeed + y, acceleration * Time.deltaTime);
+            velocity = Vector3.MoveTowards(velocity, Quaternion.FromToRotation(Vector3.up, playerInfo.Normal) * moveDir * maxSpeed + y, moveAcceleration * Time.deltaTime);
 
             rb.AddForce((velocity - rb.velocity) / Time.deltaTime);
 

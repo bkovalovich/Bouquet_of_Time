@@ -19,6 +19,12 @@ namespace Bouquet
 
         public FloatVariableSO gravityMagnitude;
 
+        [Header("Visuals")]
+        [SerializeField] protected Transform modelParent;
+        protected Transform pitch;
+        protected Transform yaw;
+        protected Transform roll;
+
         public override void EnterState()
         {
             base.EnterState();
@@ -26,18 +32,32 @@ namespace Bouquet
             playerInfo.Grounded = false;
             playerInfo.Normal = rb.transform.up;
             enterSpeed = (rb.velocity - playerInfo.Normal * Vector3.Dot(playerInfo.Normal, rb.velocity)).magnitude;
+
+            pitch = modelParent.GetChild(0);
+            yaw = pitch.GetChild(0);
+            roll = yaw.GetChild(0);
         }
 
         public override void FrameUpdate()
         {
             CheckGrounded();
+            SolveModelRotation();
         }
 
         public override void PhysicsUpdate()
         {
             rb.AddForce(Vector3.down * gravityMagnitude, ForceMode.Acceleration);
 
+
             Move();
+        }
+
+        protected virtual void SolveModelRotation()
+        {
+            pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.identity, 1 - Mathf.Pow(0.001f, Time.deltaTime));
+            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.identity, 1 - Mathf.Pow(0.001f, Time.deltaTime));
+            roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.Euler(0, roll.localRotation.eulerAngles.y, 0), 1 - Mathf.Pow(0.01f, Time.deltaTime));
+
         }
 
         public void CheckGrounded()
