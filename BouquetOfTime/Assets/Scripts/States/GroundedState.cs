@@ -73,15 +73,13 @@ namespace Bouquet
 
         public override void FrameUpdate()
         {
-            SolveModelRotation();
+            //SolveModelRotation();
 
             
         }
 
         protected virtual void SolveModelRotation()
         {
-            
-
             Vector3 normalVelocity = rb.velocity.normalized;
             Vector3 velocityCross = Vector3.Cross(normalVelocity, transform.up);
 
@@ -100,8 +98,8 @@ namespace Bouquet
 
             /*pitch.localRotation = Quaternion.AngleAxis(pitchMagnitude, pitch.right);
             yaw.localRotation = Quaternion.AngleAxis(-yawMagnitude, yaw.forward);*/
-            pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.AngleAxis(pitchMagnitude, pitch.right), 1 - Mathf.Pow(accelerationTiltSpeed * 0.01f, Time.deltaTime));
-            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.AngleAxis(-yawMagnitude, yaw.forward), 1 - Mathf.Pow(accelerationTiltSpeed * 0.01f, Time.deltaTime));
+            pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.AngleAxis(pitchMagnitude, modelParent.right), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
+            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.AngleAxis(-yawMagnitude, modelParent.forward), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
 
 
             if (Vector3.Dot(rb.velocity.normalized, acceleration.normalized) < -0.4f)
@@ -112,12 +110,13 @@ namespace Bouquet
             if (rb.velocity.sqrMagnitude > 0.1f)
             {
                 Vector3 startForward = Vector3.ProjectOnPlane(pitch.forward + yaw.forward, transform.up).normalized;
-                Quaternion rollRotation = Quaternion.FromToRotation(startForward, rb.velocity - (Vector3.Dot(Vector3.up, rb.velocity) * Vector3.up));
-                roll.localRotation = Quaternion.RotateTowards(roll.localRotation, rollRotation, velocityRotationSpeed * Time.deltaTime);
+                Quaternion rollRotation = Quaternion.FromToRotation(startForward, (rb.velocity - (Vector3.Dot(Vector3.up, rb.velocity) * Vector3.up)).normalized);
+                roll.localRotation = Quaternion.Slerp(roll.localRotation, rollRotation, 1 - Mathf.Pow(velocityRotationSpeed, Time.deltaTime));
+                Debug.DrawRay(transform.position, rollRotation * Vector3.forward * 3, Color.yellow);
             }
             else
             {
-                roll.localRotation = Quaternion.RotateTowards(roll.localRotation, Quaternion.Euler(0, roll.localRotation.eulerAngles.y, 0), velocityRotationSpeed * Time.deltaTime);
+                roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.Euler(0, roll.localRotation.eulerAngles.y, 0), 1 - Mathf.Pow(velocityRotationSpeed, Time.deltaTime));
             }
         }
 
@@ -126,6 +125,8 @@ namespace Bouquet
             Move();
             SnapToGround();
             DoJump();
+
+            SolveModelRotation();
 
             acceleration = (rb.velocity - previousVelocity) / Time.deltaTime;
             previousVelocity = rb.velocity;
