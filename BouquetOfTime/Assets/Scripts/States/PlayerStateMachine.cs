@@ -23,6 +23,13 @@ namespace Bouquet
         private bool tryAttack;
         private bool tryDodge;
 
+        public void Setup(PlayerInfoSO info, InputSO input)
+        {
+            playerInfo = info;
+            _input = input;
+            InitializeStates();
+        }
+
         public void InitializeStates()
         {
             if (!playerInfo)

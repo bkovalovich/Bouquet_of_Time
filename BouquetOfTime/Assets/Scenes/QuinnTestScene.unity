@@ -339,7 +339,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -365,8 +365,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190879794}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19658048, y: -0.58991504, z: 0.15089972, w: 0.7684957}
-  m_LocalPosition: {x: 3.9796731, y: 3.388714, z: -1.0647607}
+  m_LocalRotation: {x: -0.07229815, y: 0.8048117, z: -0.10022674, w: -0.5805219}
+  m_LocalPosition: {x: 16.200098, y: 4.7050195, z: 6.827703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1208,9 +1208,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_JoinAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 116bc82e-d0a0-488b-bca4-7e39b9dae7c3
@@ -1218,7 +1218,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 3468742162631221507, guid: b699b8e6e6e9d414e814e542441b981b, type: 3}
   m_PlayerPrefab: {fileID: 3520567069281464174, guid: 466f63ead5fb1dc4d8189474cb587e89, type: 3}
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0

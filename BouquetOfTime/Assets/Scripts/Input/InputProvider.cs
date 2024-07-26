@@ -33,6 +33,11 @@ public class InputProvider : MonoBehaviour
         
     }
 
+    public void Setup(PlayerInfoSO info, InputSO input)
+    {
+        this.input = input;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         input.OnMove?.Invoke(context);

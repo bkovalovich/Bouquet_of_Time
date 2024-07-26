@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class TestRootMotion : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
 
     public Rigidbody rb;
@@ -46,6 +46,11 @@ public class TestRootMotion : MonoBehaviour
         animator.SetBool("Grounded", playerInfo.Grounded);
 
         
+    }
+
+    public void Setup(PlayerInfoSO info, InputSO input)
+    {
+        playerInfo = info;
     }
 
     
