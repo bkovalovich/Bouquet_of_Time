@@ -8,7 +8,7 @@ namespace Bouquet
 {
     public abstract class PlayerState : State
     {
-        [SerializeField] protected InputSO input;
+        public InputSO input;
 
         public PlayerInfoSO playerInfo;
 

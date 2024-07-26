@@ -8,8 +8,8 @@ namespace Bouquet
 {
     public class PlayerStateMachine : StateMachine
     {
-        [SerializeField] InputSO _input;
-        [SerializeField] PlayerInfoSO playerInfo;
+        public InputSO _input;
+        public PlayerInfoSO playerInfo;
         [SerializeField] Rigidbody rb;
 
         [Header("States")]
@@ -23,7 +23,7 @@ namespace Bouquet
         private bool tryAttack;
         private bool tryDodge;
 
-        private void Awake()
+        public void InitializeStates()
         {
             if (!playerInfo)
             {
@@ -35,9 +35,11 @@ namespace Bouquet
             }
             playerInfo.rb = rb;
 
-            foreach (PlayerState state in GetComponentsInChildren<PlayerState>())
+            foreach (PlayerState state in GetComponentsInChildren<PlayerState>(true))
             {
+                Debug.Log(state.ToString());
                 state.playerInfo = playerInfo;
+                state.input = _input;
                 state.gameObject.SetActive(false);
             }
         }
@@ -45,6 +47,7 @@ namespace Bouquet
         #region enable/disable
         private void OnEnable()
         {
+            InitializeStates();
             _input.OnSprint += OnSprint;
             _input.OnPrimaryAttack += OnAttack;
             _input.OnDodge += OnDodge;

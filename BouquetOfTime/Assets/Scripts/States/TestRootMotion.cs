@@ -39,10 +39,10 @@ public class TestRootMotion : MonoBehaviour
     {
         animator.SetFloat("Speed", rb.velocity.magnitude);
         animator.SetFloat("VelocityX", rb.velocity.x);
-        animator.SetFloat("VelocityY", rb.velocity.y);
+        animator.SetFloat("VelocityY", Mathf.MoveTowards(animator.GetFloat("VelocityY"), rb.velocity.y, 80 * Time.deltaTime));
         animator.SetFloat("VelocityZ", rb.velocity.z);
         animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
-        animator.SetFloat("VDotA", Vector3.Dot(rb.velocity.normalized, acceleration.normalized));
+        animator.SetFloat("VDotA", Vector3.Dot(Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).normalized, Vector3.ProjectOnPlane(acceleration, playerInfo.Normal).normalized));
         animator.SetBool("Grounded", playerInfo.Grounded);
 
         
