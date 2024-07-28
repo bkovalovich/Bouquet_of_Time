@@ -23,6 +23,7 @@ namespace Bouquet
                 playerNumber = 1;
             }
             _playerinfo = ScriptableObject.CreateInstance<PlayerInfoSO>();
+            _playerinfo.playerNumber = playerNumber;
             _input = ScriptableObject.CreateInstance<InputSO>();
             playerCam.gameObject.layer = (int)Mathf.Log(cameraStartLayer<<(playerNumber - 1), 2);
             playerCam.playerInfo = _playerinfo;
