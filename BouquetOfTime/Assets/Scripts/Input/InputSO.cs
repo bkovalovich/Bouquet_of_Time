@@ -22,7 +22,4 @@ public class InputSO : ScriptableObject {
     public Action<InputAction.CallbackContext> OnSecondaryAttack;
 
 
-
-
-
 }

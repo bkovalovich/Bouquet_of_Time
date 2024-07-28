@@ -10,7 +10,7 @@ namespace Bouquet
         public int playerNumber = -1;
         [SerializeField] PlayerInfoSO _playerinfo;
         [SerializeField] InputSO _input;
-        [SerializeField] Camera playerCam;
+        [SerializeField] PlayerCameraSetup playerCam;
 
         [SerializeField] LayerMask cameraStartLayer;
 
@@ -25,6 +25,7 @@ namespace Bouquet
             _playerinfo = ScriptableObject.CreateInstance<PlayerInfoSO>();
             _input = ScriptableObject.CreateInstance<InputSO>();
             playerCam.gameObject.layer = (int)Mathf.Log(cameraStartLayer<<(playerNumber - 1), 2);
+            playerCam.playerInfo = _playerinfo;
             
         }
 
