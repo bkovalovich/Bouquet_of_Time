@@ -36,5 +36,10 @@ namespace Bouquet
             character.SetActive(false);
             character.SetActive(true);
         }
+
+        public void SetPlayerNumber(int value)
+        {
+            playerNumber = value;
+        }
     }
 }

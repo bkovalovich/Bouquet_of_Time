@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5417397679866186960}
   - component: {fileID: 6309273189295522521}
-  - component: {fileID: 2197226553648650107}
   - component: {fileID: 5791545982433645878}
   m_Layer: 7
   m_Name: Camera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2197226553648650107
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421161120663181062}
-  m_Enabled: 1
 --- !u!114 &5791545982433645878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +407,7 @@ MonoBehaviour:
     m_ActionName: PlayerMove/Dodge[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMove
+  m_DefaultActionMap: PlayerCameraLook
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6309273189295522521}
 --- !u!114 &7576071932513692894
@@ -704,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 5287022820314734447, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374881554507628563, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
+      propertyPath: PlayerIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5471944010661317451, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_Layer

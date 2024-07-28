@@ -320,11 +320,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fae12b60-3c73-4a74-9793-1c7133ec31d3"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=12,y=14)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CameraXY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f900f3a0-3494-45c6-8299-1e3fb2776867"",
                     ""path"": ""<Mouse>/scroll/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CameraZ"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54cc3d02-7c8f-4565-b611-01d62428082b"",
+                    ""path"": ""<Gamepad>/dpad/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""CameraZ"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
