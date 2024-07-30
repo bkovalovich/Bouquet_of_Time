@@ -199,6 +199,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""be0c57d5-bccb-4d9e-85d7-320721a21b7a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TestMouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""dd3a9fb5-8a82-4e16-8991-0e06e6cc7dd2"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
@@ -313,7 +324,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse;TestMouse"",
                     ""action"": ""CameraXY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -980,11 +991,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""devicePath"": ""<Keyboard>"",
                     ""isOptional"": false,
                     ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
                 }
             ]
         },
@@ -1033,11 +1039,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""TestKeyboard"",
-            ""bindingGroup"": ""TestKeyboard"",
+            ""name"": ""TestMouse"",
+            ""bindingGroup"": ""TestMouse"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Keyboard>"",
+                    ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -1496,13 +1502,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    private int m_TestKeyboardSchemeIndex = -1;
-    public InputControlScheme TestKeyboardScheme
+    private int m_TestMouseSchemeIndex = -1;
+    public InputControlScheme TestMouseScheme
     {
         get
         {
-            if (m_TestKeyboardSchemeIndex == -1) m_TestKeyboardSchemeIndex = asset.FindControlSchemeIndex("TestKeyboard");
-            return asset.controlSchemes[m_TestKeyboardSchemeIndex];
+            if (m_TestMouseSchemeIndex == -1) m_TestMouseSchemeIndex = asset.FindControlSchemeIndex("TestMouse");
+            return asset.controlSchemes[m_TestMouseSchemeIndex];
         }
     }
     public interface IPlayerMoveActions

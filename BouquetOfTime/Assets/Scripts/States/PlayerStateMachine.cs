@@ -44,7 +44,6 @@ namespace Bouquet
 
             foreach (PlayerState state in GetComponentsInChildren<PlayerState>(true))
             {
-                Debug.Log(state.ToString());
                 state.playerInfo = playerInfo;
                 state.input = _input;
                 state.gameObject.SetActive(false);

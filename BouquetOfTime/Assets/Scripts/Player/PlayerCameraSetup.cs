@@ -12,17 +12,19 @@ namespace Bouquet
 
         public PlayerInfoSO playerInfo;
 
-        private void OnEnable()
+        private void Start()
         {
             if(_camera == null) { _camera = GetComponent<Camera>(); }
             _camera.cullingMask |= (1 << gameObject.layer);
             if(VirtualCameras == null) { gameObject.SetActive(false); return; }
-            foreach(var cam in VirtualCameras)
+            foreach(CinemachineVirtualCameraBase cam in VirtualCameras)
             {
                 if (cam == null) { continue; }
 
                 cam.gameObject.layer = gameObject.layer;
                 cam.GetComponent<CinemachineInputProvider>().PlayerIndex = playerInfo.playerNumber - 1;
+                cam.gameObject.SetActive(false);
+                cam.gameObject.SetActive(true);
             }
         }
     }

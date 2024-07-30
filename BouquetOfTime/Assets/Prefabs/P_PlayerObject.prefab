@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3580172654007754234}
   - component: {fileID: 3602493078421647657}
   - component: {fileID: 7576071932513692894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P_PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ MonoBehaviour:
     m_ActionName: PlayerMove/Dodge[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerCameraLook
+  m_DefaultActionMap: PlayerMove
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6309273189295522521}
 --- !u!114 &7576071932513692894
@@ -496,11 +496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7660195
+      value: 0.7660196
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20601846
+      value: 0.20601848
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 717290559955949439, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15814453
+      value: 0.15814452
       objectReference: {fileID: 0}
     - target: {fileID: 897619825685783692, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_Layer
@@ -720,7 +720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5374881554507628563, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: PlayerIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5471944010661317451, guid: 41d1af07388dedc449a352b52f2177e2, type: 3}
       propertyPath: m_Layer
