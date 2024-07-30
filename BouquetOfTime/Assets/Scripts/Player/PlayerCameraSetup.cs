@@ -7,7 +7,7 @@ namespace Bouquet
 {
     public class PlayerCameraSetup : MonoBehaviour
     {
-        [SerializeField] Camera _camera;
+        public Camera _camera;
         public CinemachineVirtualCameraBase[] VirtualCameras;
 
         public PlayerInfoSO playerInfo;

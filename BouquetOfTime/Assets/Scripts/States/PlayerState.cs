@@ -13,5 +13,6 @@ namespace Bouquet
         public PlayerInfoSO playerInfo;
 
         protected Rigidbody rb => playerInfo.rb;
+        protected Camera cam => playerInfo.camera;
     }
 }

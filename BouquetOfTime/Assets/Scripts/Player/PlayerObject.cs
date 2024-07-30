@@ -24,6 +24,7 @@ namespace Bouquet
             }
             _playerinfo = ScriptableObject.CreateInstance<PlayerInfoSO>();
             _playerinfo.playerNumber = playerNumber;
+            _playerinfo.camera = playerCam._camera;
             _input = ScriptableObject.CreateInstance<InputSO>();
             Debug.Log($"NewLayer {(int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1)}");
             playerCam.gameObject.layer = (int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1);
