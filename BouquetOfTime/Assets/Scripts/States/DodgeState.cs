@@ -47,7 +47,7 @@ namespace Bouquet
 
         public override void FrameUpdate()
         {
-            if(Time.time - timeEntered > directionInputTime && input.MoveDirection.sqrMagnitude > 0)
+            if(Time.time - timeEntered < directionInputTime && input.MoveDirection.sqrMagnitude > 0)
             {
                 projectedInput = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y).normalized;
                 Vector3 CameraForward = cam.transform.forward;
@@ -61,7 +61,7 @@ namespace Bouquet
 
             Transform roll = model.GetChild(0).GetChild(0).GetChild(0);
             Debug.DrawRay(transform.position, projectedInput * 2, Color.yellow);
-            roll.localRotation = Quaternion.LookRotation(projectedInput, rb.transform.up);
+            roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.LookRotation(projectedInput, rb.transform.up), 1 - Mathf.Pow(0.01f, Time.deltaTime));
         }
 
         public override void PhysicsUpdate()
