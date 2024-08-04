@@ -10,7 +10,6 @@ public class Item : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("trigger enter");
             other.GetComponent<PlayerInventory>().AddItem(item);
             Destroy(this.gameObject);
         }
