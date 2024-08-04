@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 303535120611708656}
   m_Layer: 0
-  m_Name: KeySpawn
-  m_TagString: KeySpawn
+  m_Name: ItemSpawn
+  m_TagString: ItemSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

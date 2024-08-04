@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 140961111080712625}
   - component: {fileID: 6701833165783833498}
   m_Layer: 0
-  m_Name: KeySpawner
+  m_Name: ItemSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693f552bf59a11840b5bca82dd41b587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyPrefab: {fileID: 2944378524127531690, guid: a6f9c4f2a5ba3d7499a798bac2fbbcde, type: 3}
+  goldKeyPrefab: {fileID: 2944378524127531690, guid: a6f9c4f2a5ba3d7499a798bac2fbbcde, type: 3}
+  silverKeyPrefab: {fileID: 2445580003904548231, guid: 74c032ff24923834f98d7820c3c00de7, type: 3}
 --- !u!1 &6530312181628965797
 GameObject:
   m_ObjectHideFlags: 0

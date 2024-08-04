@@ -5,18 +5,17 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public GameObject door;
-    public ItemSO silverKey;
+    public ItemSO key;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Debug.Log("trigger enter");
             var inventory = other.GetComponent<PlayerInventory>();
-            if (inventory.ContainsItem(silverKey))
+            if (inventory.ContainsItem(key))
             {
                 door.SetActive(false);
-                inventory.RemoveItem(silverKey);
+                inventory.RemoveItem(key);
             }
         }
     }
