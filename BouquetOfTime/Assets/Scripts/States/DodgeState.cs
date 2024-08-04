@@ -38,7 +38,7 @@ namespace Bouquet
             animator.CrossFade("Dodge", 0.25f);
 
             projectedInput = input.MoveDirection.sqrMagnitude > 0 ? new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y).normalized : Vector3.forward;
-            Vector3 CameraForward = Camera.main.transform.forward;
+            Vector3 CameraForward = cam.transform.forward;
             CameraForward = Vector3.ProjectOnPlane(CameraForward, rb.transform.up).normalized;
             projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
             projectedInput.Normalize();
@@ -50,7 +50,7 @@ namespace Bouquet
             if(Time.time - timeEntered > directionInputTime && input.MoveDirection.sqrMagnitude > 0)
             {
                 projectedInput = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y).normalized;
-                Vector3 CameraForward = Camera.main.transform.forward;
+                Vector3 CameraForward = cam.transform.forward;
                 CameraForward = Vector3.ProjectOnPlane(CameraForward, rb.transform.up).normalized;
                 projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
                 projectedInput.Normalize();

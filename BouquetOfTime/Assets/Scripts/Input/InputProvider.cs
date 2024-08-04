@@ -1,3 +1,4 @@
+using Bouquet;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,21 @@ public class InputProvider : MonoBehaviour
 {
     [SerializeField] InputSO input;
 
-
+    [SerializeField] PlayerStateMachine playerStateMachine;
 
     private void OnEnable()
     {
-        foreach(InputActionMap map in GetComponent<PlayerInput>().actions.actionMaps)
+        input = ScriptableObject.CreateInstance<InputSO>();
+        if (playerStateMachine == null)
+        {
+            playerStateMachine = GetComponentInChildren<PlayerStateMachine>(true);
+        }
+        playerStateMachine._input = input;
+        playerStateMachine.playerInfo = ScriptableObject.CreateInstance<PlayerInfoSO>();
+        playerStateMachine.gameObject.SetActive(false);
+        playerStateMachine.gameObject.SetActive(true);
+
+        foreach (InputActionMap map in GetComponent<PlayerInput>().actions.actionMaps)
         {
             map.Enable();
         }
@@ -20,6 +31,11 @@ public class InputProvider : MonoBehaviour
     private void OnDisable()
     {
         
+    }
+
+    public void Setup(PlayerInfoSO info, InputSO input)
+    {
+        this.input = input;
     }
 
     public void OnMove(InputAction.CallbackContext context)

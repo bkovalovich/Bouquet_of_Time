@@ -81,7 +81,7 @@ namespace Bouquet
             targetSpeed = horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed ? enterSpeed : maxSpeed;
             Vector3 y = Vector3.Dot(velocity, playerInfo.Normal) * playerInfo.Normal;
             Vector3 moveDir = new Vector3(input.MoveDirection.x, 0, input.MoveDirection.y);
-            Vector3 horizontalCameraDir = Camera.main.transform.forward;
+            Vector3 horizontalCameraDir = cam.transform.forward;
             horizontalCameraDir.y = 0;
             horizontalCameraDir.Normalize();
             Quaternion CameraRotation = Quaternion.FromToRotation(Vector3.forward, horizontalCameraDir);
