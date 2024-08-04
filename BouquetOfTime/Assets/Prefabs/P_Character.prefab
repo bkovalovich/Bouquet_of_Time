@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 3279164360200168544}
   m_Layer: 0
   m_Name: P_Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 8063688414289015203}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,6 +614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136232486518996929}
   - component: {fileID: 6615434221915645737}
+  - component: {fileID: 2657435145096232962}
   m_Layer: 0
   m_Name: Default
   m_TagString: Player
@@ -659,6 +660,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2657435145096232962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371613059769268550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2c3b6abb2feae4fb657455844ce6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: 0
 --- !u!1 &8523639561277485328
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,11 +827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20601848
+      value: 0.20601845
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5880143
+      value: -0.58801425
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.z

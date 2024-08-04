@@ -176,8 +176,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1850218085390993670}
   - component: {fileID: 3813561276501660673}
+  - component: {fileID: 5826145782954200135}
   m_Layer: 0
-  m_Name: P_Key
+  m_Name: P_GoldKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,6 +224,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 1.4, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5826145782954200135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944378524127531690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae31b3db4b1b2b445b67afe3977cca2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4e990f583ed9a494c936ea7d0ecf5f1b, type: 2}
 --- !u!1 &3961096694729733968
 GameObject:
   m_ObjectHideFlags: 0
