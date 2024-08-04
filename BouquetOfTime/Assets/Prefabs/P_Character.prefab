@@ -1559,6 +1559,10 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3960520270751917231, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 5276362882607514410}
+    - target: {fileID: 3960520270751917231, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
       propertyPath: m_Priority
       value: 0
       objectReference: {fileID: 0}
@@ -1594,6 +1598,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7404682060250989354, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
+      propertyPath: m_Targets.Array.data[0].target
+      value: 
+      objectReference: {fileID: 5276362882607514410}
     - target: {fileID: 7548963198284346157, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
       propertyPath: m_BindingMode
       value: 5
