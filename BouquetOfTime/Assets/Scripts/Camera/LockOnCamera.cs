@@ -83,7 +83,7 @@ namespace Bouquet
         // Update is called once per frame
         void LateUpdate()
         {
-            if(debug)
+            if(debug || Input.GetKeyDown(KeyCode.F))
             {
                 debug = false;
                 if(target.parent != transform)
@@ -93,6 +93,16 @@ namespace Bouquet
                 }
 
                 LookForTarget();
+            }
+
+            if(target.parent != transform)
+            {
+                Vector3 followPos = cinemachineFreeLook.Follow.position;
+                Vector3 targetPos = target.position;
+                followPos.y = 0;
+                targetPos.y = 0;
+                float angle = Vector3.SignedAngle(Vector3.forward, (targetPos - followPos).normalized, Vector3.up);
+                cinemachineFreeLook.m_XAxis.Value = Mathf.LerpAngle(cinemachineFreeLook.m_XAxis.Value, angle, 1 - Mathf.Pow(0.1f, Time.deltaTime));
             }
         }
     }

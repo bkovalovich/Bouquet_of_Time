@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2421161120663181062}
   serializedVersion: 2
   m_LocalRotation: {x: -0.07229815, y: 0.8048117, z: -0.10022674, w: -0.5805219}
-  m_LocalPosition: {x: 16.200098, y: 4.7050195, z: 6.827703}
+  m_LocalPosition: {x: 16.200098, y: 2.9550195, z: 6.827703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
