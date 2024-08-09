@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,28 +24,25 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //make this framerate independent
-        /*animator.SetFloat("Velocity", rb.velocity.magnitude);
-        animator.SetFloat("VelocityX", rb.velocity.x);
-        animator.SetFloat("VelocityY", rb.velocity.y);
-        animator.SetFloat("VelocityZ", rb.velocity.z);
-        animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
-        animator.SetBool("Grounded", playerInfo.Grounded);*/
 
-        acceleration = Vector3.Lerp(acceleration, (rb.velocity - previousVelocity) / Time.deltaTime, 1 - Mathf.Pow(0.01f, Time.deltaTime));
+        Vector3 deltaVel = rb.velocity - previousVelocity;
+        acceleration = Vector3.Slerp(acceleration, deltaVel / Time.deltaTime, 1 - Mathf.Pow(0.0001f, Time.deltaTime));
+        Debug.DrawRay(transform.position + transform.up, acceleration * 5f, Color.green);
         previousVelocity = rb.velocity;
     }
 
     private void LateUpdate()
     {
+        Vector3 localVelocity = transform.worldToLocalMatrix * rb.velocity;
         animator.SetFloat("Speed", rb.velocity.magnitude);
-        animator.SetFloat("VelocityX", rb.velocity.x);
-        animator.SetFloat("VelocityY", Mathf.MoveTowards(animator.GetFloat("VelocityY"), rb.velocity.y, 80 * Time.deltaTime));
-        animator.SetFloat("VelocityZ", rb.velocity.z);
+        animator.SetFloat("VelocityX", localVelocity.x);
+        animator.SetFloat("VelocityY", Mathf.MoveTowards(animator.GetFloat("VelocityY"), localVelocity.y, 80 * Time.deltaTime));
+        animator.SetFloat("VelocityZ", localVelocity.z);
         animator.SetFloat("HorizontalVelocity", Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).magnitude);
         animator.SetFloat("VDotA", Vector3.Dot(Vector3.ProjectOnPlane(rb.velocity, playerInfo.Normal).normalized, Vector3.ProjectOnPlane(acceleration, playerInfo.Normal).normalized));
+        float accelAngle = Vector3.SignedAngle(Vector3.ProjectOnPlane(rb.velocity, transform.up), Vector3.ProjectOnPlane(acceleration, transform.up), transform.up);
+        animator.SetFloat("AccelerationAngleDifference", Mathf.Lerp(animator.GetFloat("AccelerationAngleDifference"), accelAngle * acceleration.magnitude * 0.1f, 1 - Mathf.Pow(0.0001f, Time.deltaTime)));
         animator.SetBool("Grounded", playerInfo.Grounded);
-
         
     }
 
