@@ -62,9 +62,9 @@ namespace Bouquet
 
         public void CheckGrounded()
         {
-            Ray ray = new Ray(rb.position + rb.velocity * Time.deltaTime - rb.transform.up * 0.9f, -rb.transform.up);
+            Ray ray = new Ray(rb.position - rb.transform.up * playerInfo.currentCollider.height * 0.49f, -rb.transform.up);
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 0.2f))
+            if (Physics.Raycast(ray, out hitInfo, 0.2f + rb.velocity.magnitude * Time.deltaTime))
             {
                 Debug.DrawLine(ray.origin, hitInfo.point, Color.cyan, 1);
                 if (Vector3.Dot(rb.transform.up, hitInfo.normal) >= 0.5f && rb.velocity.y < 0.05f)

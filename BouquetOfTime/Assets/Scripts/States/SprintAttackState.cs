@@ -19,17 +19,11 @@ namespace Bouquet
         protected virtual void OnEnable()
         {
             animator.CrossFade("SprintAttack", 0.25f);
-            attackFinishedEvent.Subscribe(OnAttackFinished);
         }
 
-        private void OnAttackFinished()
+        public void OnAttackFinished()
         {
             ExitAttackFinished();
-        }
-
-        private void OnDisable()
-        {
-            attackFinishedEvent.Unsubscribe(OnAttackFinished);
         }
 
         public override void FrameUpdate()

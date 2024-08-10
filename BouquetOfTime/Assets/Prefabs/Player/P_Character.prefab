@@ -1182,6 +1182,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8454591041901048047, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
   m_PrefabInstance: {fileID: 4210608699050513559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7763019836251309576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5896583161051173535, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+  m_PrefabInstance: {fileID: 4210608699050513559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996ba258226957745a252d608f119989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5129927389224531482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1320,7 +1331,19 @@ MonoBehaviour:
         m_CallState: 2
   AttackFinishedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7763019836251309576}
+        m_TargetAssemblyTypeName: Bouquet.SprintAttackState, Assembly-CSharp
+        m_MethodName: OnAttackFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &7534127282770754905
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,5 +18,10 @@ namespace Bouquet
         {
             DodgeFinishedEvent?.Invoke();
         }
+
+        public void AttackFinished()
+        {
+            AttackFinishedEvent?.Invoke(); 
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Bouquet
         [SerializeField] PlayerInfoSO _playerinfo;
         [SerializeField] InputSO _input;
         [SerializeField] PlayerCameraSetup playerCam;
+        [SerializeField] Collider defaultCollider;
 
         [SerializeField] LayerMask cameraStartLayer;
 
@@ -25,6 +26,7 @@ namespace Bouquet
             _playerinfo = ScriptableObject.CreateInstance<PlayerInfoSO>();
             _playerinfo.playerNumber = playerNumber;
             _playerinfo.camera = playerCam._camera;
+            _playerinfo.currentCollider = (CapsuleCollider)defaultCollider;
             _input = ScriptableObject.CreateInstance<InputSO>();
             Debug.Log($"NewLayer {(int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1)}");
             playerCam.gameObject.layer = (int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1);
