@@ -15,21 +15,11 @@ namespace Bouquet
 
         protected Vector3 projectedInput;
 
-        [SerializeField] EventSO dodgeFinishedEvent;
 
-        protected virtual void OnEnable()
-        {
-            dodgeFinishedEvent.Subscribe(OnDodgeFinished);
-        }
 
-        private void OnDodgeFinished()
+        public void OnDodgeFinished()
         {
             GetComponentInParent<PlayerStateMachine>().TransitionOut();
-        }
-
-        private void OnDisable()
-        {
-            dodgeFinishedEvent.Unsubscribe(OnDodgeFinished);
         }
 
         public override void EnterState()

@@ -111,11 +111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8072084285362058317, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 5.08
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: -8072084285362058317, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -0.88
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: -2321986619709737642, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_XDamping
@@ -135,11 +135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2321986619709737642, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 5.08
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: -2321986619709737642, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -0.88
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1254704349106658641, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,11 +199,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5895181295589366833, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_YAxis.Value
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5895181295589366833, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_XAxis.m_MaxSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895181295589366833, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
+      propertyPath: m_XAxis.m_AccelTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895181295589366833, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
+      propertyPath: m_YAxis.m_AccelTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5895181295589366833, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_XAxis.m_InputAxisName
@@ -231,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609457848182515959, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 5.08
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 6609457848182515959, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -0.88
+      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8006364302636356301, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
@@ -381,7 +389,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 0
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.5

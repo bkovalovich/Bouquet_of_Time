@@ -98,8 +98,8 @@ namespace Bouquet
 
             /*pitch.localRotation = Quaternion.AngleAxis(pitchMagnitude, pitch.right);
             yaw.localRotation = Quaternion.AngleAxis(-yawMagnitude, yaw.forward);*/
-            pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.AngleAxis(pitchMagnitude, modelParent.right), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
-            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.AngleAxis(-yawMagnitude, modelParent.forward), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
+            /*pitch.localRotation = Quaternion.Slerp(pitch.localRotation, Quaternion.AngleAxis(pitchMagnitude, modelParent.right), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));
+            yaw.localRotation = Quaternion.Slerp(yaw.localRotation, Quaternion.AngleAxis(-yawMagnitude, modelParent.forward), 1 - Mathf.Pow(accelerationTiltSpeed, Time.deltaTime));*/
 
 
             if (Vector3.Dot(rb.velocity.normalized, acceleration.normalized) < -0.4f)

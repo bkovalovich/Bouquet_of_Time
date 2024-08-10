@@ -102,7 +102,7 @@ namespace Bouquet
                 followPos.y = 0;
                 targetPos.y = 0;
                 float angle = Vector3.SignedAngle(Vector3.forward, (targetPos - followPos).normalized, Vector3.up);
-                cinemachineFreeLook.m_XAxis.Value = Mathf.LerpAngle(cinemachineFreeLook.m_XAxis.Value, angle, 1 - Mathf.Pow(0.1f, Time.deltaTime));
+                cinemachineFreeLook.m_XAxis.Value = Mathf.LerpAngle(cinemachineFreeLook.m_XAxis.Value, angle, 1 - Mathf.Pow(0.01f, Time.deltaTime));
             }
         }
     }

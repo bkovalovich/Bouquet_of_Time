@@ -19,7 +19,11 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'OneHand_Up_Walk_L_InPlace' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Neck' has translation animation
+      that will be discarded.\n\t'Left_Shoulder' has translation animation that will
+      be discarded.\n\t'Right_Shoulder' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -871,8 +875,7 @@ ModelImporter:
     hasTranslationDoF: 1
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 97ada40f57d401540b8eafeeba1f0e9c,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 97ada40f57d401540b8eafeeba1f0e9c, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
