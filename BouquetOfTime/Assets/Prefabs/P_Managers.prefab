@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: {fileID: 11400000, guid: 9896d95b1eab95845b87023c7da5dfbb, type: 2}
+  startTime: 120
 --- !u!1 &6530312181628965797
 GameObject:
   m_ObjectHideFlags: 0

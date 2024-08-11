@@ -22,7 +22,7 @@ public class TimerUI : MonoBehaviour
     private void UpdateTimer(float time)
     {
         float minutes = Mathf.Floor(time / 60);
-        float seconds = Mathf.Round(time % 60);
+        float seconds = Mathf.Floor(time - (minutes * 60));
         timerUI.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 }
