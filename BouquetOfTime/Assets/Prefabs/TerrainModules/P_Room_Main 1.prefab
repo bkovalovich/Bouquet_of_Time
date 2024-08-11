@@ -160,6 +160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: {fileID: 11400000, guid: 4e990f583ed9a494c936ea7d0ecf5f1b, type: 2}
+  sand: {fileID: 11400000, guid: c98edcbe8612ae54f8e54b01b8e45817, type: 2}
+  currentTime: {fileID: 11400000, guid: 9896d95b1eab95845b87023c7da5dfbb, type: 2}
+  sandValue: 5
   messageUI: {fileID: 0}
   message: You Win!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 --- !u!1001 &501081193012855914
