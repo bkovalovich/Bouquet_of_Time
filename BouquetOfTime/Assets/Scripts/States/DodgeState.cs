@@ -51,7 +51,7 @@ namespace Bouquet
 
             Transform roll = model.GetChild(0).GetChild(0).GetChild(0);
             Debug.DrawRay(transform.position, projectedInput * 2, Color.yellow);
-            roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.LookRotation(projectedInput, rb.transform.up), 1 - Mathf.Pow(0.01f, Time.deltaTime));
+            roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.LookRotation(projectedInput, rb.transform.up), 1 - Mathf.Pow(0.001f, Time.deltaTime));
         }
 
         public override void PhysicsUpdate()

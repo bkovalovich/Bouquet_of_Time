@@ -14,6 +14,8 @@ namespace Bouquet
         public Animator animator;
         [SerializeField] PlayerInfoSO playerInfo;
 
+        [SerializeField] PlayerStateMachine playerStateMachine;
+
         private Vector3 previousVelocity;
         private Vector3 acceleration;
 
@@ -47,6 +49,9 @@ namespace Bouquet
             animator.SetFloat("AccelerationAngleDifference", Mathf.Lerp(animator.GetFloat("AccelerationAngleDifference"), accelAngle * acceleration.magnitude * 0.05f, 1 - Mathf.Pow(0.0001f, Time.deltaTime)));
             //animator.SetFloat("AccelerationAngleDifference", Mathf.Lerp(animator.GetFloat("AccelerationAngleDifference"), accelAngle * acceleration.magnitude * 0.1f, 1 - Mathf.Pow(0.0001f, Time.deltaTime)));
             animator.SetBool("Grounded", playerInfo.Grounded);
+
+            bool islocked = typeof(LockedOnGroundedState).IsAssignableFrom(playerStateMachine.CurrentState.GetType());
+            animator.SetLayerWeight(animator.GetLayerIndex("LockedLocomotion"), islocked? 1 : 0);
 
         }
 

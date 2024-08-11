@@ -173,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 5568971954434265891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.057, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1105,10 +1105,30 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 3279164360200168544}
+    - target: {fileID: 3944593765891371337, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: lockOnCamera
+      value: 
+      objectReference: {fileID: 7076545054441808859}
+    - target: {fileID: 4101543005358874205, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 6621950149664490007}
+    - target: {fileID: 4101543005358874205, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: modelParent
+      value: 
+      objectReference: {fileID: 736547169514439742}
+    - target: {fileID: 4101543005358874205, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: capsuleCollider
+      value: 
+      objectReference: {fileID: 6615434221915645737}
     - target: {fileID: 4408936740143565720, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
       propertyPath: m_Name
       value: StateMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 5896583161051173535, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 736547169514439742}
     - target: {fileID: 5896583161051173535, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
       propertyPath: animator
       value: 
@@ -1161,11 +1181,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8805180070655131765, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+--- !u!114 &923542956017690078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3944593765891371337, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+  m_PrefabInstance: {fileID: 4210608699050513559}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5b54c7bdd83d64f871a2375f33b372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4432861129760844868 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 570754267646490835, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
@@ -1302,6 +1337,7 @@ MonoBehaviour:
   rb: {fileID: 3279164360200168544}
   animator: {fileID: 1611088472708664203}
   playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
+  playerStateMachine: {fileID: 923542956017690078}
 --- !u!114 &2150944712580843143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,3 +1542,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8525567950389028303, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
   m_PrefabInstance: {fileID: 7534127282770754905}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6621950149664490007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3705191780161552206, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
+  m_PrefabInstance: {fileID: 7534127282770754905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7076545054441808859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 773045611307736706, guid: bfed764224d86e549b8f1e3f74282da6, type: 3}
+  m_PrefabInstance: {fileID: 7534127282770754905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16b45853ebda5b4b9c30418109ba8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,7 +16,7 @@ namespace Bouquet
 
         public LayerMask targetsMask;
 
-        public bool debug;
+        public bool locked;
 
         private void Awake()
         {
@@ -61,6 +61,7 @@ namespace Bouquet
                 LockOff();
                 return; 
             }
+            locked = true;
             cinemachineFreeLook.enabled = true;
             cinemachineFreeLook.Priority = 2;
 
@@ -68,6 +69,7 @@ namespace Bouquet
 
         private void LockOff()
         {
+            locked = false;
             target.parent = transform;
             target.localPosition = Vector3.zero;
             cinemachineFreeLook.enabled = false;
@@ -83,9 +85,8 @@ namespace Bouquet
         // Update is called once per frame
         void LateUpdate()
         {
-            if(debug || Input.GetKeyDown(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F))
             {
-                debug = false;
                 if(target.parent != transform)
                 {
                     LockOff();

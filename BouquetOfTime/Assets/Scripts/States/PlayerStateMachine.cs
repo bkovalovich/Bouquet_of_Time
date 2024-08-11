@@ -11,10 +11,12 @@ namespace Bouquet
         public InputSO _input;
         public PlayerInfoSO playerInfo;
         [SerializeField] Rigidbody rb;
+        [SerializeField] LockOnCamera lockOnCamera;
 
         [Header("States")]
         [SerializeField] AirbourneState airbourneState;
         [SerializeField] GroundedState groundedState;
+        [SerializeField] LockedOnGroundedState lockedOnGroundedState;
         [SerializeField] SprintState sprintState;
         [SerializeField] SprintAttackState sprintAttackState;
         [SerializeField] DodgeState dodgeState;
@@ -158,18 +160,27 @@ namespace Bouquet
                 TransitionTo(groundedState);
             }
 
-            if(trySprint && CurrentState == groundedState)
+            if(CurrentState == groundedState && lockOnCamera.locked)
+            {
+                TransitionTo(lockedOnGroundedState);
+            }
+            if(CurrentState == lockedOnGroundedState && !lockOnCamera.locked)
+            {
+                TransitionTo(groundedState);
+            }
+
+            if(trySprint && typeof(GroundedState).IsAssignableFrom(CurrentState.GetType()))
             {
                 TransitionTo(sprintState);
             }
 
-            if(tryAttack && CurrentState == sprintState)
+            if(tryAttack && CurrentState == sprintState && rb.velocity.sqrMagnitude > 2.5f)
             {
                 tryAttack = false;
                 TransitionTo(sprintAttackState);
             }
 
-            if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState))
+            if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState || CurrentState == lockedOnGroundedState))
             {
                 tryDodge = false;
                 TransitionTo(dodgeState);
