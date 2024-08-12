@@ -19,10 +19,12 @@ namespace Bouquet
         private Vector3 previousVelocity;
         private Vector3 acceleration;
 
+        private bool lastGrounded;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            previousVelocity = rb.velocity;
         }
 
         // Update is called once per frame
@@ -32,7 +34,13 @@ namespace Bouquet
             Vector3 deltaVel = rb.velocity - previousVelocity;
             acceleration = Vector3.Slerp(acceleration, deltaVel / Time.deltaTime, 1 - Mathf.Pow(0.0001f, Time.deltaTime));
             Debug.DrawRay(transform.position + transform.up, acceleration * 5f, Color.green);
+            if (playerInfo.Grounded && !lastGrounded)
+            {
+                animator.SetTrigger("Land");
+                animator.SetLayerWeight(animator.GetLayerIndex("Land"), Mathf.Clamp(Mathf.Sqrt(Mathf.Abs(previousVelocity.y)) / 7, 0.1f, 1));
+            }
             previousVelocity = rb.velocity;
+            lastGrounded = playerInfo.Grounded;
         }
 
         private void LateUpdate()
@@ -52,7 +60,7 @@ namespace Bouquet
 
             bool islocked = typeof(LockedOnGroundedState).IsAssignableFrom(playerStateMachine.CurrentState.GetType());
             animator.SetLayerWeight(animator.GetLayerIndex("LockedLocomotion"), islocked? 1 : 0);
-
+            
         }
 
         public void Setup(PlayerInfoSO info, InputSO input)
