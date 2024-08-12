@@ -92,7 +92,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -3923728743177870759, guid: 31172bcb3c8e5864dbcb5815c5f73cf3, type: 3}
-    m_Threshold: 0.13333334
+    m_Threshold: 0.16000001
     m_Position: {x: 0.88, y: 0.43}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -100,7 +100,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -4452440636216180258, guid: 7ae0a5d9769db55478a98ecf3d701a68, type: 3}
-    m_Threshold: 0.26666668
+    m_Threshold: 0.32000002
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -108,7 +108,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -9080604812924327466, guid: 3eba890aa817ab74cbbcabeb5f45c3de, type: 3}
-    m_Threshold: 0.4
+    m_Threshold: 0.48000002
     m_Position: {x: -0.88, y: -0.43}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -116,32 +116,16 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 2556799179960716019, guid: 483b6d4a9b8877d4aba02eea7773c6eb, type: 3}
-    m_Threshold: 0.53333336
+    m_Threshold: 0.64000005
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -3923728743177870759, guid: 31172bcb3c8e5864dbcb5815c5f73cf3, type: 3}
-    m_Threshold: 0.6666667
-    m_Position: {x: -0.88, y: 0.43}
-    m_TimeScale: 1
-    m_CycleOffset: 0.5
-    m_DirectBlendParameter: Speed
-    m_Mirror: 1
-  - serializedVersion: 2
-    m_Motion: {fileID: -9080604812924327466, guid: 3eba890aa817ab74cbbcabeb5f45c3de, type: 3}
-    m_Threshold: 0.8
-    m_Position: {x: 0.88, y: -0.43}
-    m_TimeScale: 1
-    m_CycleOffset: 0.5
-    m_DirectBlendParameter: Speed
-    m_Mirror: 1
   m_BlendParameter: VelocityX
   m_BlendParameterY: VelocityZ
   m_MinThreshold: 0
-  m_MaxThreshold: 0.8
+  m_MaxThreshold: 0.64000005
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 2
@@ -220,9 +204,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.3263598
-  m_TransitionOffset: 0
-  m_ExitTime: 0.44207463
+  m_TransitionDuration: 0.32635975
+  m_TransitionOffset: 0.15570481
+  m_ExitTime: 0.5618474
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -735,7 +719,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -1560926937114567774}
-    m_Position: {x: 380, y: 110, z: 0}
+    m_Position: {x: 380, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1133,7 +1117,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SprintAttack
-  m_Speed: 1
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5660830591552470903}
