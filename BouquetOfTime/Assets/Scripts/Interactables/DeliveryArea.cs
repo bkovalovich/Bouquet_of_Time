@@ -5,6 +5,10 @@ using TMPro;
 
 public class DeliveryArea : MonoBehaviour
 {
+    public ItemSO sand;
+    [SerializeField] FloatVariableSO currentTime;
+    public float sandValue;
+
     public ItemSO key;
     public GameObject messageUI;
     public string message;
@@ -14,11 +18,18 @@ public class DeliveryArea : MonoBehaviour
         if (other.tag == "Player")
         {
             var inventory = other.GetComponent<PlayerInventory>();
-            if (inventory.ContainsItem(key))
+            if (inventory.Contains(key))
             {
                 messageUI.SetActive(true);
                 messageUI.GetComponent<TextMeshProUGUI>().text = message;
-                inventory.RemoveItem(key);
+                inventory.Remove(key, 1);
+            }
+
+            //automatically deposits all sand; we might want to change this in the future
+            if (inventory.Contains(sand))
+            {
+                currentTime.Value += sandValue * inventory.GetCount(sand);
+                inventory.RemoveAll(sand);
             }
         }
     }

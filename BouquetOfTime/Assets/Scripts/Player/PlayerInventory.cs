@@ -11,11 +11,11 @@ public class PlayerInventory : MonoBehaviour
         inventory = new Dictionary<ItemSO, int>();
     }
 
-    public void AddItem(ItemSO item)
+    public void Add(ItemSO item, int count)
     {
         if (inventory.TryGetValue(item, out int itemCount))
         {
-            inventory[item] = itemCount++;
+            inventory[item] += count;
         }
         else
         {
@@ -23,13 +23,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void RemoveItem(ItemSO item)
+    public void Remove(ItemSO item, int count)
     {
         if (inventory.TryGetValue(item, out int itemCount))
         {
-            if (itemCount > 1)
+            if (itemCount > count)
             {
-                inventory[item] = itemCount--;
+                inventory[item] -= count;
             }
             else
             {
@@ -38,8 +38,28 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public bool ContainsItem(ItemSO item)
+    public void RemoveAll(ItemSO item)
+    {
+        if (inventory.TryGetValue(item, out int itemCount))
+        {
+            inventory.Remove(item);
+        }
+    }
+
+    public bool Contains(ItemSO item)
     {
         return inventory.ContainsKey(item);
+    }
+
+    public int GetCount(ItemSO item)
+    {
+        if (inventory.TryGetValue(item, out int itemCount))
+        {
+            return itemCount;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

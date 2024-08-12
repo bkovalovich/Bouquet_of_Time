@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 4e990f583ed9a494c936ea7d0ecf5f1b, type: 2}
+  count: 1
 --- !u!1 &3961096694729733968
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,10 +12,10 @@ public class Door : MonoBehaviour
         if (other.tag == "Player")
         {
             var inventory = other.GetComponent<PlayerInventory>();
-            if (inventory.ContainsItem(key))
+            if (inventory.Contains(key))
             {
                 door.SetActive(false);
-                inventory.RemoveItem(key);
+                inventory.Remove(key, 1);
             }
         }
     }
