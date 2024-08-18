@@ -55,7 +55,7 @@ namespace Bouquet
                 //projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
                 //projectedInput.Normalize();
                 float y = rb.velocity.y;
-                rb.velocity = projectedInput * (rb.velocity - rb.transform.up * y).magnitude;
+                rb.velocity = Vector3.Project(projectedInput, rb.velocity);
                 rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
             }*/
 
