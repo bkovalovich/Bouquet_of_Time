@@ -9,6 +9,8 @@ namespace Bouquet
     public class PlayerCombatStateMachine : StateMachine
     {
         public Animator animator;
+        public InputSO _input;
+        public PlayerInfoSO playerInfo;
 
         public bool isCancelable;
         public bool isComplete;
@@ -16,10 +18,25 @@ namespace Bouquet
         [SerializeField] float inputBufferTime;
         public float InputTime;
 
+        private bool inputUsed;
+
+        public bool AttackInput => Time.time - InputTime < inputBufferTime && !inputUsed;
+
+        [SerializeField] CombatState sprintAttackState;
+        [SerializeField] CombatState firstAttackState;
+
         bool attackPressed;
         private void OnEnable()
         {
             ((PlayerStateMachine)ParentState)._input.OnPrimaryAttack += OnPrimaryAttack;
+            foreach(CombatState state in gameObject.GetComponentsInChildren<CombatState>(true))
+            {
+                state.ParentState = this;
+                state.playerInfo = playerInfo;
+                state.input = _input;
+                state.animator = animator;
+                state.gameObject.SetActive(false);
+            }
         }
 
         private void OnPrimaryAttack(InputAction.CallbackContext context)
@@ -27,6 +44,7 @@ namespace Bouquet
             if(context.started)
             {
                 InputTime = Time.time;
+                inputUsed = false;
             }
         }
 
@@ -38,7 +56,10 @@ namespace Bouquet
 
         public void OnAttackFinished()
         {
-            ((PlayerStateMachine)ParentState).TransitionOut();
+            if (isComplete)
+            {
+                ((PlayerStateMachine)ParentState).TransitionOut();
+            }
         }
 
         public void OnAttackCompleted()
@@ -64,13 +85,18 @@ namespace Bouquet
         public override void EnterState()
         {
             base.EnterState();
-            if(((PlayerStateMachine)ParentState).playerInfo.rb.velocity.sqrMagnitude > 9)
-            {
 
+            TransitionTo(null);
+
+            isComplete = false;
+
+            if (((PlayerStateMachine)ParentState).playerInfo.rb.velocity.sqrMagnitude > 9 * 9)
+            {
+                TransitionTo(sprintAttackState);
             }
             else
             {
-
+                TransitionTo(firstAttackState);
             }
         }
 
@@ -82,9 +108,10 @@ namespace Bouquet
         public override void FrameUpdate()
         {
             base.FrameUpdate();
-            if (isComplete && Time.time - InputTime < inputBufferTime)
+            if (isComplete && AttackInput)
             {
-
+                inputUsed = true;
+                EnterNextState();
             }
         }
 
@@ -92,6 +119,12 @@ namespace Bouquet
         {
             isComplete = false;
             isCancelable = true;
+            CombatState nextState = ((CombatState)CurrentState).nextState;
+            if (nextState == null)
+            {
+                return;
+            }
+            TransitionTo(nextState);
         }
 
         public override void PhysicsUpdate()

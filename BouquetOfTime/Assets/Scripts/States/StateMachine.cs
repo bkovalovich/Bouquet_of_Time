@@ -28,5 +28,28 @@ namespace Bouquet
             }
             _currentState.PhysicsUpdate();
         }
+
+        public void TransitionTo(State state)
+        {
+            
+
+            if (state == CurrentState) { return; }
+
+            if (_currentState)
+            {
+                _currentState.ExitState();
+                _currentState.gameObject.SetActive(false);
+            }
+
+            if (state == null)
+            {
+                _currentState = null;
+                return;
+            }
+
+            state.gameObject.SetActive(true);
+            state.EnterState();
+            _currentState = state;
+        }
     }
 }

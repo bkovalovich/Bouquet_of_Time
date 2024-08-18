@@ -13,6 +13,9 @@ namespace Bouquet
     {
         public UnityEvent DodgeFinishedEvent;
         public UnityEvent AttackFinishedEvent;
+        public UnityEvent WindUpFinishedEvent;
+        public UnityEvent<float> StartHitboxEvent;
+        public UnityEvent AttackCompleteEvent;
 
         public void DodgeFinished()
         {
@@ -22,6 +25,21 @@ namespace Bouquet
         public void AttackFinished()
         {
             AttackFinishedEvent?.Invoke(); 
+        }
+
+        public void WindUpFinished()
+        {
+            WindUpFinishedEvent?.Invoke();
+        }
+
+        public void StartHitbox(float time)
+        {
+            StartHitboxEvent?.Invoke(time);
+        }
+
+        public void AttackComplete()
+        {
+            AttackCompleteEvent?.Invoke();
         }
     }
 }

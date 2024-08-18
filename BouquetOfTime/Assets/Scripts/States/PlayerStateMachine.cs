@@ -20,6 +20,7 @@ namespace Bouquet
         [SerializeField] SprintState sprintState;
         [SerializeField] SprintAttackState sprintAttackState;
         [SerializeField] DodgeState dodgeState;
+        [SerializeField] PlayerCombatStateMachine combatState;
 
         private bool trySprint;
         private bool tryAttack;
@@ -51,6 +52,10 @@ namespace Bouquet
                 state.input = _input;
                 state.gameObject.SetActive(false);
             }
+            combatState.ParentState = this;
+            combatState.playerInfo = playerInfo;
+            combatState._input = _input;
+            combatState.gameObject.SetActive(false);
         }
 
         #region enable/disable
@@ -123,20 +128,6 @@ namespace Bouquet
             _currentState.PhysicsUpdate();
         }
 
-        public void TransitionTo(State state)
-        {
-            if(state == CurrentState) { return; }
-
-            if (_currentState)
-            {
-                _currentState.ExitState();
-                _currentState.gameObject.SetActive(false);
-            }
-            state.gameObject.SetActive(true);
-            state.EnterState();
-            _currentState = state;
-        }
-
         public void TransitionOut()
         {
             TransitionTo(DefaultState);
@@ -174,10 +165,10 @@ namespace Bouquet
                 TransitionTo(sprintState);
             }
 
-            if(tryAttack && CurrentState == sprintState && rb.velocity.sqrMagnitude > 2.5f)
+            if(tryAttack && typeof(GroundedState).IsAssignableFrom(CurrentState.GetType()))
             {
                 tryAttack = false;
-                TransitionTo(sprintAttackState);
+                TransitionTo(combatState);
             }
 
             if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState || CurrentState == lockedOnGroundedState))

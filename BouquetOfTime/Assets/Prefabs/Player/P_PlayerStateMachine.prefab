@@ -1,62 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1110492705462185799
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8212655518937685073}
-  - component: {fileID: 5896583161051173535}
-  m_Layer: 0
-  m_Name: SprintAttackState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &8212655518937685073
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110492705462185799}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8454591041901048047}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5896583161051173535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110492705462185799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 996ba258226957745a252d608f119989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParentState: {fileID: 0}
-  OnEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
-  input: {fileID: 11400000, guid: 809e15c8d55259c4b808485906ee4dfd, type: 2}
-  playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
-  animator: {fileID: 0}
-  model: {fileID: 0}
-  gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
-  directionInputTime: 0.35
 --- !u!1 &2420626479951849005
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +148,6 @@ Transform:
   - {fileID: 7888092310536990362}
   - {fileID: 3463003622094261414}
   - {fileID: 5881882599879283085}
-  - {fileID: 8212655518937685073}
   - {fileID: 1176737721013338974}
   - {fileID: 5370954024802900166}
   m_Father: {fileID: 0}
@@ -238,8 +180,9 @@ MonoBehaviour:
   groundedState: {fileID: 5977511059281636811}
   lockedOnGroundedState: {fileID: 4101543005358874205}
   sprintState: {fileID: 1244754178867280187}
-  sprintAttackState: {fileID: 5896583161051173535}
+  sprintAttackState: {fileID: 0}
   dodgeState: {fileID: 570754267646490835}
+  combatState: {fileID: 0}
 --- !u!1 &5190306790720111803
 GameObject:
   m_ObjectHideFlags: 0

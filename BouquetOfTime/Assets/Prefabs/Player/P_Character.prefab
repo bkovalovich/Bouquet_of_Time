@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.068416916
+      value: 0.06841692
       objectReference: {fileID: 0}
     - target: {fileID: 2026964045356548146, guid: 1518c134b49a9b640a1474d89b47adeb, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1081,6 +1081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5276362882607514410}
     m_Modifications:
+    - target: {fileID: 315787987924533794, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1611088472708664203}
     - target: {fileID: 570754267646490835, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
       propertyPath: model
       value: 
@@ -1106,6 +1110,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3279164360200168544}
     - target: {fileID: 3944593765891371337, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: combatState
+      value: 
+      objectReference: {fileID: 4471777346814252725}
+    - target: {fileID: 3944593765891371337, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
       propertyPath: lockOnCamera
       value: 
       objectReference: {fileID: 7076545054441808859}
@@ -1125,6 +1133,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StateMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 4490972772028405040, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 736547169514439742}
+    - target: {fileID: 4490972772028405040, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1611088472708664203}
     - target: {fileID: 5896583161051173535, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
       propertyPath: model
       value: 
@@ -1212,22 +1228,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a9fae3a9373c54bab02098ab79ae8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5709345585684112504 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8454591041901048047, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
-  m_PrefabInstance: {fileID: 4210608699050513559}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7763019836251309576 stripped
+--- !u!114 &4471777346814252725 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5896583161051173535, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+  m_CorrespondingSourceObject: {fileID: 315787987924533794, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
   m_PrefabInstance: {fileID: 4210608699050513559}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 996ba258226957745a252d608f119989, type: 3}
+  m_Script: {fileID: 11500000, guid: 81d83103067eed84db85e9aedf15061a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5709345585684112504 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8454591041901048047, guid: 7bf84febc244d8343919a2ff1f32dfdf, type: 3}
+  m_PrefabInstance: {fileID: 4210608699050513559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5129927389224531482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,6 +1354,7 @@ MonoBehaviour:
   animator: {fileID: 1611088472708664203}
   playerInfo: {fileID: 11400000, guid: 60e01c92687137f4e9015fe236782eb2, type: 2}
   playerStateMachine: {fileID: 923542956017690078}
+  lockOnCamera: {fileID: 7076545054441808859}
 --- !u!114 &2150944712580843143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,9 +1385,54 @@ MonoBehaviour:
   AttackFinishedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7763019836251309576}
+      - m_Target: {fileID: 4471777346814252725}
         m_TargetAssemblyTypeName: Bouquet.SprintAttackState, Assembly-CSharp
         m_MethodName: OnAttackFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  WindUpFinishedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4471777346814252725}
+        m_TargetAssemblyTypeName: Bouquet.PlayerCombatStateMachine, Assembly-CSharp
+        m_MethodName: OnWindUpFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StartHitboxEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4471777346814252725}
+        m_TargetAssemblyTypeName: Bouquet.PlayerCombatStateMachine, Assembly-CSharp
+        m_MethodName: OnStartHitbox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  AttackCompleteEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4471777346814252725}
+        m_TargetAssemblyTypeName: Bouquet.PlayerCombatStateMachine, Assembly-CSharp
+        m_MethodName: OnAttackCompleted
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

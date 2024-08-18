@@ -6,14 +6,11 @@ using UnityEngine.Events;
 
 namespace Bouquet
 {
-    public class SprintAttackState : PlayerState
+    public class SprintAttackState : CombatState
     {
 
 
-        [SerializeField] Animator animator;
         [SerializeField] Transform model;
-
-        [SerializeField] FloatVariableSO gravityMagnitude;
 
         protected Vector3 projectedInput;
         [SerializeField] float directionInputTime;
@@ -23,7 +20,8 @@ namespace Bouquet
         public override void EnterState()
         {
             base.EnterState();
-            animator.CrossFade("SprintAttack", 0.25f);
+            animator.SetTrigger("SprintAttack");
+            animator.ResetTrigger("DoNextAttack");
 
             projectedInput = new Vector3(rb.velocity.x, 0, rb.velocity.y).normalized;
             
@@ -45,7 +43,7 @@ namespace Bouquet
 
         public override void PhysicsUpdate()
         {
-            /*if (Time.time - timeEntered < directionInputTime && input.MoveDirection.sqrMagnitude > 0)
+            if (Time.time - timeEntered < directionInputTime && input.MoveDirection.sqrMagnitude > 0)
             {
                 Vector3 CameraForward = cam.transform.forward;
                 CameraForward = Vector3.ProjectOnPlane(CameraForward, rb.transform.up).normalized;
@@ -57,7 +55,7 @@ namespace Bouquet
                 float y = rb.velocity.y;
                 rb.velocity = Vector3.Project(projectedInput, rb.velocity);
                 rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
-            }*/
+            }
 
             rb.velocity *= 0.95f;
 
