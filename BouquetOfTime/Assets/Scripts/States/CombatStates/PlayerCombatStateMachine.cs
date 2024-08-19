@@ -117,13 +117,13 @@ namespace Bouquet
 
         public void EnterNextState()
         {
-            isComplete = false;
-            isCancelable = true;
             CombatState nextState = ((CombatState)CurrentState).nextState;
             if (nextState == null)
             {
                 return;
             }
+            isComplete = false;
+            isCancelable = true;
             TransitionTo(nextState);
         }
 

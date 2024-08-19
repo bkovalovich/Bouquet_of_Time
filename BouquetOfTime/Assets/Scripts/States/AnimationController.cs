@@ -58,8 +58,15 @@ namespace Bouquet
             //animator.SetFloat("AccelerationAngleDifference", Mathf.Lerp(animator.GetFloat("AccelerationAngleDifference"), accelAngle * acceleration.magnitude * 0.1f, 1 - Mathf.Pow(0.0001f, Time.deltaTime)));
             animator.SetBool("Grounded", playerInfo.Grounded);
 
-            bool islocked = typeof(LockedOnGroundedState).IsAssignableFrom(playerStateMachine.CurrentState.GetType());
-            animator.SetLayerWeight(animator.GetLayerIndex("LockedLocomotion"), islocked? 1 : 0);
+            if (playerStateMachine.CurrentState != null)
+            {
+                bool islocked = typeof(LockedOnGroundedState).IsAssignableFrom(playerStateMachine.CurrentState.GetType());
+                animator.SetLayerWeight(animator.GetLayerIndex("LockedLocomotion"), islocked ? 1 : 0);
+            }
+            else
+            {
+                animator.SetLayerWeight(animator.GetLayerIndex("LockedLocomotion"), 0);
+            }
             
         }
 
