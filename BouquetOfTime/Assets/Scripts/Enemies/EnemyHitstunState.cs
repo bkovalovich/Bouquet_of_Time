@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChaseState : EnemyState {
-    public EnemyChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine) {
+public class EnemyHitstunState : EnemyState {
+
+    public EnemyHitstunState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine) {
 
     }
     public override void EnterState() {
-        //Debug.Log($"entered {this.GetType()}");
+        base.EnterState();
     }
 
     public override void ExitState() {
+        base.ExitState();
     }
 
     public override void FrameUpdate() {
+        base.FrameUpdate();
     }
 
     public override void PhysicsUpdate() {
-        enemy.ChasePlayer();
+        base.PhysicsUpdate();
     }
 }
