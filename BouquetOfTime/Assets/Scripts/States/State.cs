@@ -7,6 +7,8 @@ namespace Bouquet
 {
     public abstract class State : MonoBehaviour
     {
+        public State ParentState;
+
         protected double timeEntered;
 
         public abstract void FrameUpdate();

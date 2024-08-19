@@ -11,13 +11,16 @@ namespace Bouquet
         public InputSO _input;
         public PlayerInfoSO playerInfo;
         [SerializeField] Rigidbody rb;
+        [SerializeField] LockOnCamera lockOnCamera;
 
         [Header("States")]
         [SerializeField] AirbourneState airbourneState;
         [SerializeField] GroundedState groundedState;
+        [SerializeField] LockedOnGroundedState lockedOnGroundedState;
         [SerializeField] SprintState sprintState;
         [SerializeField] SprintAttackState sprintAttackState;
         [SerializeField] DodgeState dodgeState;
+        [SerializeField] PlayerCombatStateMachine combatState;
 
         private bool trySprint;
         private bool tryAttack;
@@ -44,10 +47,15 @@ namespace Bouquet
 
             foreach (PlayerState state in GetComponentsInChildren<PlayerState>(true))
             {
+                state.ParentState = this;
                 state.playerInfo = playerInfo;
                 state.input = _input;
                 state.gameObject.SetActive(false);
             }
+            combatState.ParentState = this;
+            combatState.playerInfo = playerInfo;
+            combatState._input = _input;
+            combatState.gameObject.SetActive(false);
         }
 
         #region enable/disable
@@ -120,20 +128,6 @@ namespace Bouquet
             _currentState.PhysicsUpdate();
         }
 
-        public void TransitionTo(State state)
-        {
-            if(state == CurrentState) { return; }
-
-            if (_currentState)
-            {
-                _currentState.ExitState();
-                _currentState.gameObject.SetActive(false);
-            }
-            state.gameObject.SetActive(true);
-            state.EnterState();
-            _currentState = state;
-        }
-
         public void TransitionOut()
         {
             TransitionTo(DefaultState);
@@ -157,18 +151,27 @@ namespace Bouquet
                 TransitionTo(groundedState);
             }
 
-            if(trySprint && CurrentState == groundedState)
+            if(CurrentState == groundedState && lockOnCamera.locked)
+            {
+                TransitionTo(lockedOnGroundedState);
+            }
+            if(CurrentState == lockedOnGroundedState && !lockOnCamera.locked)
+            {
+                TransitionTo(groundedState);
+            }
+
+            if(trySprint && typeof(GroundedState).IsAssignableFrom(CurrentState.GetType()))
             {
                 TransitionTo(sprintState);
             }
 
-            if(tryAttack && CurrentState == sprintState)
+            if(tryAttack && typeof(GroundedState).IsAssignableFrom(CurrentState.GetType()))
             {
                 tryAttack = false;
-                TransitionTo(sprintAttackState);
+                TransitionTo(combatState);
             }
 
-            if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState))
+            if(tryDodge && (CurrentState == groundedState || CurrentState == sprintState || CurrentState == lockedOnGroundedState))
             {
                 tryDodge = false;
                 TransitionTo(dodgeState);
