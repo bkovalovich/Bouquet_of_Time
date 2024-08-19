@@ -6,14 +6,13 @@ public class Enemy : MonoBehaviour
 {
     #region State Machine
     public EnemyStateMachine stateMachine;
-    public EnemyIdleState enemyIdleState;
-    public EnemyChaseState enemyChaseState;
+    public EnemyState enemyIdleState, enemyChaseState;
     #endregion
     #region Component Refs
-    private Rigidbody rb;
+    protected Rigidbody rb;
     #endregion
     public GameObject playerObj;
-    private bool idleEnumeratorRunning = false;
+    protected bool idleEnumeratorRunning = false;
 
     private void Awake() {
         stateMachine = new EnemyStateMachine();
@@ -25,7 +24,6 @@ public class Enemy : MonoBehaviour
     private void Start() {
         stateMachine.Initialize(enemyIdleState);
     }
-
 
     public void OnPlayerEnterRange() {
         Debug.Log("player entered");
@@ -40,8 +38,10 @@ public class Enemy : MonoBehaviour
             StartCoroutine(IdleMotion(direction, speed, duration));
         }
     }
+    public void ChasePlayer() {
+        transform.position = Vector3.MoveTowards(transform.position, playerObj.transform.position, 1 * Time.deltaTime);
+    }
     IEnumerator IdleMotion(Vector3 direction, float speed, float duration) {
-       // Debug.Log("Idlemotion started");
         idleEnumeratorRunning = true;
         rb.velocity = direction * speed * Time.deltaTime;
         yield return new WaitForSeconds(duration);
