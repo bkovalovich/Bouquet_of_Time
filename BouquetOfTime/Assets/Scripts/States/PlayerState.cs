@@ -1,30 +1,18 @@
+using Bouquet;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class PlayerState : MonoBehaviour
+namespace Bouquet
 {
-    [SerializeField] protected InputSO input;
-
-    public PlayerInfoSO playerInfo;
-
-    protected Rigidbody rb => playerInfo.rb;
-
-    public abstract void FrameUpdate();
-    public abstract void PhysicsUpdate();
-
-    public void EnterState(PlayerState lastState)
+    public abstract class PlayerState : State
     {
-        OnEnter?.Invoke(lastState);
+        public InputSO input;
 
+        public PlayerInfoSO playerInfo;
+
+        protected Rigidbody rb => playerInfo.rb;
+        protected Camera cam => playerInfo.camera;
     }
-
-    public void ExitState()
-    {
-        OnExit?.Invoke();
-    }
-
-    public UnityEvent<PlayerState> OnEnter;
-    public UnityEvent OnExit;
 }

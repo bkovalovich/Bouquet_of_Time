@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GravityMagnitude
   m_EditorClassIdentifier: 
   description: 
-  value: 9.8
+  value: 16
   DEBUG: 0

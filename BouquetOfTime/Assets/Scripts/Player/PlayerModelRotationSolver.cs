@@ -32,10 +32,10 @@ public class PlayerModelRotationSolver : MonoBehaviour
         Vector3 velocityCross = Vector3.Cross(normalVelocity, transform.up);
 
         float tempForward = Vector3.Dot(acceleration, normalVelocity);
-        tempForward = tiltCurve.Evaluate(tempForward / (maxTiltAngle * 2)) * maxTiltAngle;
+        tempForward = tempForward / (maxTiltAngle * 2) * maxTiltAngle;
         //tempForward = Mathf.Sqrt(Mathf.Abs(tempForward) * 40) * 0.3f * Mathf.Sign(tempForward);
         float tempSideways = Vector3.Dot(acceleration, velocityCross);
-        tempSideways = tiltCurve.Evaluate(tempSideways / (maxTiltAngle * 2)) * maxTiltAngle;
+        tempSideways = tempSideways / (maxTiltAngle * 2) * maxTiltAngle;
         //tempSideways = Mathf.Sqrt(Mathf.Abs(tempSideways) * 40) * 0.3f * Mathf.Sign(tempSideways);
 
         var tilt = normalVelocity * tempForward + velocityCross * tempSideways;

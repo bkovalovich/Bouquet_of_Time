@@ -2,50 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+namespace Bouquet
 {
-    [SerializeField] PlayerInfoSO playerInfo;
-
-    [SerializeField] PlayerState defaultState;
-
-    [SerializeField] PlayerState currentState;
-
-    
-
-    private void OnEnable()
+    public class StateMachine : State
     {
-        if(!playerInfo)
+        protected State _currentState;
+        public virtual State CurrentState => _currentState;
+
+        public State DefaultState;
+
+        public override void FrameUpdate()
         {
-            playerInfo = new PlayerInfoSO();
+            if(CurrentState == null)
+            {
+                _currentState = DefaultState;
+            } 
+            _currentState.FrameUpdate();
         }
-        playerInfo.rb = GetComponentInParent<Rigidbody>();
-        Debug.Log(playerInfo.rb);
-        foreach (PlayerState state in GetComponentsInChildren<PlayerState>())
+
+        public override void PhysicsUpdate()
         {
-            state.playerInfo = playerInfo;
+            if (CurrentState == null)
+            {
+                _currentState = DefaultState;
+            }
+            _currentState.PhysicsUpdate();
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        TransitionTo(defaultState);
-    }
+        public void TransitionTo(State state)
+        {
+            
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentState.FrameUpdate();
-    }
+            if (state == CurrentState) { return; }
 
-    private void FixedUpdate()
-    {
-        currentState.PhysicsUpdate(); 
-    }
+            if (_currentState)
+            {
+                _currentState.ExitState();
+                _currentState.gameObject.SetActive(false);
+            }
 
-    public void TransitionTo(PlayerState state)
-    {
-        state.EnterState(currentState);
-        currentState = state;
+            if (state == null)
+            {
+                _currentState = null;
+                return;
+            }
+
+            state.gameObject.SetActive(true);
+            state.EnterState();
+            _currentState = state;
+        }
     }
 }
