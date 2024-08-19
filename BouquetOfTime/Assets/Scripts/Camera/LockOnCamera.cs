@@ -23,8 +23,9 @@ namespace Bouquet
             if (!cinemachineFreeLook)
             {
                 cinemachineFreeLook = GetComponent<CinemachineFreeLook>();
+                cinemachineFreeLook.enabled = true;
             }
-            if(!target)
+            if (!target)
             {
                 target = transform.GetChild(0);
             }
@@ -72,7 +73,6 @@ namespace Bouquet
             locked = false;
             target.parent = transform;
             target.localPosition = Vector3.zero;
-            cinemachineFreeLook.enabled = false;
             cinemachineFreeLook.Priority = -10;
         }
 
@@ -103,7 +103,7 @@ namespace Bouquet
                 followPos.y = 0;
                 targetPos.y = 0;
                 float angle = Vector3.SignedAngle(Vector3.forward, (targetPos - followPos).normalized, Vector3.up);
-                cinemachineFreeLook.m_XAxis.Value = Mathf.LerpAngle(cinemachineFreeLook.m_XAxis.Value, angle, 1 - Mathf.Pow(0.01f, Time.deltaTime));
+                cinemachineFreeLook.m_XAxis.Value = Mathf.LerpAngle(cinemachineFreeLook.m_XAxis.Value, angle, 1 - Mathf.Pow(0.005f, Time.deltaTime));
             }
         }
     }
