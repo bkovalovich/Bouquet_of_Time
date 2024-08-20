@@ -14,6 +14,7 @@ namespace Bouquet
         [SerializeField] Collider defaultCollider;
 
         [SerializeField] LayerMask cameraStartLayer;
+        [SerializeField] LockOnCamera lockOnCamera;
 
         public UnityEvent<PlayerInfoSO, InputSO> playerInstantiatedEvent;
 
@@ -31,6 +32,8 @@ namespace Bouquet
             Debug.Log($"NewLayer {(int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1)}");
             playerCam.gameObject.layer = (int)Mathf.Log(cameraStartLayer, 2) + (playerNumber - 1);
             playerCam.playerInfo = _playerinfo;
+            lockOnCamera.input = _input;
+            lockOnCamera.enabled = true;
         }
 
         private void Start()

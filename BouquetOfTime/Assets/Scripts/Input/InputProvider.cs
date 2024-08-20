@@ -82,4 +82,9 @@ public class InputProvider : MonoBehaviour
         input.OnDodge?.Invoke(context);
 
     }
+
+    public void OnLockOn(InputAction.CallbackContext context)
+    {
+        input.OnLock?.Invoke(context);
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 namespace Bouquet
 {
@@ -18,6 +19,8 @@ namespace Bouquet
 
         public bool locked;
 
+        public InputSO input;
+
         private void Awake()
         {
             if (!cinemachineFreeLook)
@@ -33,7 +36,27 @@ namespace Bouquet
 
         private void OnEnable()
         {
-            
+            input.OnLock += OnLockOn;
+        }
+
+        public void OnLockOn(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                Debug.Log("Lock");
+                if (target.parent != transform)
+                {
+                    LockOff();
+                    return;
+                }
+
+                LookForTarget();
+            }
+        }
+
+        private void OnDisable()
+        {
+            input.OnLock -= OnLockOn;
         }
 
         public void LookForTarget()
@@ -85,7 +108,7 @@ namespace Bouquet
         // Update is called once per frame
         void LateUpdate()
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            /*if(Input.GetKeyDown(KeyCode.F))
             {
                 if(target.parent != transform)
                 {
@@ -94,7 +117,7 @@ namespace Bouquet
                 }
 
                 LookForTarget();
-            }
+            }*/
 
             if(target.parent != transform)
             {
