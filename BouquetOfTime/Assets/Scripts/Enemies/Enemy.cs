@@ -11,10 +11,11 @@ public class Enemy : MonoBehaviour
     #region Component Refs
     protected Rigidbody rb;
     #endregion
-    public GameObject playerObj;
+    [HideInInspector] public GameObject playerObj;
     protected bool idleEnumeratorRunning = false;
     [HideInInspector] public Vector3 currentKnockback = Vector3.zero;
     [HideInInspector] public Renderer rend;
+    [HideInInspector] public Color defaultColor, hitColor = new Color(255, 22, 0, 139);
 
     private void Awake() {
         stateMachine = new EnemyStateMachine();
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();    
+        defaultColor = rend.material.color;
     }
     private void Start() {
         stateMachine.Initialize(enemyIdleState);
