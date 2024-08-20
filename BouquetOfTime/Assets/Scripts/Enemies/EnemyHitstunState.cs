@@ -11,9 +11,13 @@ public class EnemyHitstunState : EnemyState {
     }
     public override void EnterState() {
         currentTime = 0;
+        enemy.rend.material.color = enemy.hitColor;
+        Debug.Log("In hitstun");
     }
 
     public override void ExitState() {
+        enemy.rend.material.color = enemy.defaultColor;
+        Debug.Log("leaving hitstun");
     }
 
     public override void FrameUpdate() {

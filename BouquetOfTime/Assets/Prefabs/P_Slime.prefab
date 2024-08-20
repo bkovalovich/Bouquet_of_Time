@@ -18,15 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 6873784869063099223}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.079114
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.566053
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -109,8 +109,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89, y: 0.73298305, z: 0.83}
-  m_Center: {x: -0.03, y: 0.36544475, z: -0.00000008940697}
+  m_Size: {x: 1.13, y: 1, z: 1.11}
+  m_Center: {x: -0.03, y: 0.5, z: -0.00000008940697}
 --- !u!114 &6873784869063099223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
   currentKnockback: {x: 0, y: 0, z: 0}
+  rend: {fileID: 0}
   hopVelocity: 10

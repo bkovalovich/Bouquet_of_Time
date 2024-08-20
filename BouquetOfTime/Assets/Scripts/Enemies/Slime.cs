@@ -10,12 +10,13 @@ public class Slime : Enemy {
         stateMachine = new EnemyStateMachine();
         enemyIdleState = new SlimeIdleState(this, stateMachine);
         enemyChaseState = new EnemyChaseState(this, stateMachine);
+        enemyHitState = new EnemyHitstunState(this, stateMachine);  
 
         rb = GetComponent<Rigidbody>();
+        rend = GetComponent<Renderer>();
+        defaultColor = rend.material.color;
     }
     new public void IdleMovement(Vector3 direction, float speed, float duration) {
-        Debug.Log("slime idle started");
-
         if (idleEnumeratorRunning == false) {
             StopCoroutine(IdleMotion(direction, speed, duration));
             StartCoroutine(IdleMotion(direction, speed, duration));
@@ -30,4 +31,17 @@ public class Slime : Enemy {
         idleEnumeratorRunning = false;
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "PHitbox") {
+            currentKnockback = (other.gameObject.transform.position - gameObject.transform.position).normalized * -15;
+            stateMachine.ChangeState(enemyHitState);
+        }
+    }
+
+    private void Update() {
+        stateMachine.CurrentState.FrameUpdate();
+    }
+    private void FixedUpdate() {
+        stateMachine.CurrentState.PhysicsUpdate();
+    }
 }
