@@ -18,14 +18,14 @@ namespace Bouquet
 
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            CurrentHealth = MaxHealth;
+            _currentHealth = MaxHealth;
         }
 
         public void AddHealth(float value)
         {
-            CurrentHealth += value;
+            SetHealth(CurrentHealth + value);
         }
 
         public float GetHealth()
