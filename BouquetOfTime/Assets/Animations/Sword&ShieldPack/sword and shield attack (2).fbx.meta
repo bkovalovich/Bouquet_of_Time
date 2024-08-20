@@ -64,7 +64,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.39276695
+      - time: 0.33120143
         functionName: StartHitbox
         data: 
         objectReferenceParameter: {instanceID: 0}
