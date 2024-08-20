@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyPlayerRadar : MonoBehaviour {
 
-    [SerializeField] Enemy enemy;
+    [SerializeField] Slime slime;
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
-            enemy.playerObj = other.gameObject;
-            enemy.OnPlayerEnterRange();
+            slime.playerObj = other.gameObject;
+            slime.OnPlayerEnterRange();
         }
     }
+
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag == "Player") {
-            enemy.OnPlayerLeaveRange();
+            slime.OnPlayerLeaveRange();
         }
     }
 }

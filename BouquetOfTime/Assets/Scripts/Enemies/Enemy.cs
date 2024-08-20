@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
     protected bool idleEnumeratorRunning = false;
     [HideInInspector] public Vector3 currentKnockback = Vector3.zero;
     [HideInInspector] public Renderer rend;
-    [HideInInspector] public Color defaultColor, hitColor = new Color(255, 22, 0, 139);
+    [HideInInspector] public Color defaultColor;
+    [SerializeField] public Color hitColor = new Color(255, 22, 0, 139);
 
     private void Awake() {
         stateMachine = new EnemyStateMachine();
@@ -31,13 +32,6 @@ public class Enemy : MonoBehaviour
         stateMachine.Initialize(enemyIdleState);
     }
 
-    public void OnPlayerEnterRange() {
-        Debug.Log("player entered");
-        stateMachine.ChangeState(enemyChaseState);
-    }
-    public void OnPlayerLeaveRange() {
-        stateMachine.ChangeState(enemyIdleState);
-    }
     public void IdleMovement(Vector3 direction, float speed, float duration) {
         if(idleEnumeratorRunning == false) {
             StopCoroutine(IdleMotion(direction, speed, duration));

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Slime : Enemy {
-    [SerializeField] float hopVelocity;
+    [SerializeField] public float hopVelocity, chaseVelocity, maxTime;
     private bool inAir; 
+    private Vector3 chaseDirection = Vector3.zero;
 
     private void Awake() {
         stateMachine = new EnemyStateMachine();
         enemyIdleState = new SlimeIdleState(this, stateMachine);
-        enemyChaseState = new EnemyChaseState(this, stateMachine);
+        enemyChaseState = new SlimeChaseState(this, stateMachine);
         enemyHitState = new EnemyHitstunState(this, stateMachine);  
 
         rb = GetComponent<Rigidbody>();
@@ -23,12 +24,27 @@ public class Slime : Enemy {
         }
     }
 
+    new public void ChasePlayer() {
+        Debug.Log("chaseplayer called");
+        chaseDirection = (playerObj.transform.position - transform.position).normalized * chaseVelocity;
+        rb.velocity = new Vector3(chaseDirection.x, Vector3.up.y * hopVelocity * Time.deltaTime, chaseDirection.z);
+    }
+
     IEnumerator IdleMotion(Vector3 direction, float speed, float duration) {
         idleEnumeratorRunning = true;
         rb.velocity = direction * speed * Time.deltaTime;
-        rb.velocity = new Vector3(rb.velocity.x, Vector3.up.y * hopVelocity * Time.deltaTime, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, /*Vector3.up.y * hopVelocity * Time.deltaTime*/0, rb.velocity.z);
         yield return new WaitForSeconds(duration);
         idleEnumeratorRunning = false;
+    }
+
+    public void OnPlayerEnterRange() {
+        //Debug.Log("player entered");
+        stateMachine.ChangeState(enemyChaseState);
+    }
+
+    public void OnPlayerLeaveRange() {
+        stateMachine.ChangeState(enemyIdleState);
     }
 
     private void OnTriggerEnter(Collider other) {

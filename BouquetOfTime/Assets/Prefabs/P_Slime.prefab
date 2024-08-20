@@ -16,17 +16,21 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 6873784869063099223}
+    - target: {fileID: 2486991848228517301, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
+      propertyPath: slime
+      value: 
+      objectReference: {fileID: 6873784869063099223}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 41.61394
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -40.059845
       objectReference: {fileID: 0}
     - target: {fileID: 3472272268376228125, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72,6 +76,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ef20d92a092827648a40b4c6dd739f4f, type: 2}
+    - target: {fileID: 8921110027789077150, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 14.833711
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921110027789077150, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.833711
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921110027789077150, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 14.833711
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6870456396600637442, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
     - {fileID: 4217421958795773271, guid: 629d569574b73e24898a9e31df72d5eb, type: 3}
@@ -162,5 +178,7 @@ MonoBehaviour:
   currentKnockback: {x: 0, y: 0, z: 0}
   rend: {fileID: 0}
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
-  hitColor: {r: 255, g: 22, b: 0, a: 139}
-  hopVelocity: 10
+  hitColor: {r: 0.7830189, g: 0.13665895, b: 0.1485854, a: 139}
+  hopVelocity: 300
+  chaseVelocity: 5
+  maxTime: 3
