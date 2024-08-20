@@ -385,6 +385,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3267473277103152486, guid: 466f63ead5fb1dc4d8189474cb587e89, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920905496}
     - targetCorrespondingSourceObject: {fileID: 532876055015607684, guid: 466f63ead5fb1dc4d8189474cb587e89, type: 3}
       insertIndex: -1
       addedObject: {fileID: 459951314}
@@ -2456,6 +2459,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+--- !u!1 &1920905493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3267473277103152486, guid: 466f63ead5fb1dc4d8189474cb587e89, type: 3}
+  m_PrefabInstance: {fileID: 182395070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920905496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920905493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de170736e4727104dbb6f1cf9a564b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  MaxHealth: 0
 --- !u!1 &1966424390
 GameObject:
   m_ObjectHideFlags: 0
