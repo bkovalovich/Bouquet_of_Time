@@ -282,6 +282,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4e4d922-1e5d-474d-a745-186ead36c51e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -348,6 +357,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""CameraZ"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b032f53-d0f2-4f7e-82ba-293eaf75af38"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LockOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe5fa936-8be6-423e-8660-74628cee524a"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1057,6 +1088,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerCameraLook_MouseY = m_PlayerCameraLook.FindAction("MouseY", throwIfNotFound: true);
         m_PlayerCameraLook_CameraXY = m_PlayerCameraLook.FindAction("CameraXY", throwIfNotFound: true);
         m_PlayerCameraLook_CameraZ = m_PlayerCameraLook.FindAction("CameraZ", throwIfNotFound: true);
+        m_PlayerCameraLook_LockOn = m_PlayerCameraLook.FindAction("LockOn", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1209,6 +1241,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerCameraLook_MouseY;
     private readonly InputAction m_PlayerCameraLook_CameraXY;
     private readonly InputAction m_PlayerCameraLook_CameraZ;
+    private readonly InputAction m_PlayerCameraLook_LockOn;
     public struct PlayerCameraLookActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1217,6 +1250,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @MouseY => m_Wrapper.m_PlayerCameraLook_MouseY;
         public InputAction @CameraXY => m_Wrapper.m_PlayerCameraLook_CameraXY;
         public InputAction @CameraZ => m_Wrapper.m_PlayerCameraLook_CameraZ;
+        public InputAction @LockOn => m_Wrapper.m_PlayerCameraLook_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCameraLook; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1238,6 +1272,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CameraZ.started += instance.OnCameraZ;
             @CameraZ.performed += instance.OnCameraZ;
             @CameraZ.canceled += instance.OnCameraZ;
+            @LockOn.started += instance.OnLockOn;
+            @LockOn.performed += instance.OnLockOn;
+            @LockOn.canceled += instance.OnLockOn;
         }
 
         private void UnregisterCallbacks(IPlayerCameraLookActions instance)
@@ -1254,6 +1291,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CameraZ.started -= instance.OnCameraZ;
             @CameraZ.performed -= instance.OnCameraZ;
             @CameraZ.canceled -= instance.OnCameraZ;
+            @LockOn.started -= instance.OnLockOn;
+            @LockOn.performed -= instance.OnLockOn;
+            @LockOn.canceled -= instance.OnLockOn;
         }
 
         public void RemoveCallbacks(IPlayerCameraLookActions instance)
@@ -1518,6 +1558,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMouseY(InputAction.CallbackContext context);
         void OnCameraXY(InputAction.CallbackContext context);
         void OnCameraZ(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
