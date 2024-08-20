@@ -75,11 +75,15 @@ namespace Bouquet
             isCancelable = false;
         }
 
-        public void OnStartHitbox()
+        public void OnStartHitbox(float time)
         {
-            ((CombatState)CurrentState).OnStartHitbox();
+            ((CombatState)CurrentState).OnStartHitbox(time);
         }
 
+        public void CancelAttack()
+        {
+            animator.SetTrigger("CancelAttack");
+        }
 
 
         public override void EnterState()

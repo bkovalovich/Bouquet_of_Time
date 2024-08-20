@@ -78,7 +78,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7652855
+      - time: 0.7265872
         functionName: AttackFinished
         data: 
         objectReferenceParameter: {instanceID: 0}

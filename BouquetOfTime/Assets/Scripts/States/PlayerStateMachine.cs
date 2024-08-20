@@ -151,7 +151,13 @@ namespace Bouquet
                 TransitionTo(groundedState);
             }
 
-            if(CurrentState == groundedState && lockOnCamera.locked)
+            if (tryDodge && CurrentState == combatState && combatState.isCancelable)
+            {
+                combatState.CancelAttack();
+                TransitionTo(dodgeState);
+            }
+
+            if (CurrentState == groundedState && lockOnCamera.locked)
             {
                 TransitionTo(lockedOnGroundedState);
             }
@@ -176,6 +182,8 @@ namespace Bouquet
                 tryDodge = false;
                 TransitionTo(dodgeState);
             }
+
+            
         }
     }
 }
