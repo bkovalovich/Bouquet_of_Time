@@ -33,7 +33,7 @@ public class Slime : Enemy {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "PHitbox") {
-            currentKnockback = (other.gameObject.transform.position - gameObject.transform.position).normalized * -15;
+            currentKnockback = other.transform.forward * Random.Range(8, 12);
             stateMachine.ChangeState(enemyHitState);
         }
     }
