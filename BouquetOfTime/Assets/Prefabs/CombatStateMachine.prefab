@@ -56,6 +56,10 @@ MonoBehaviour:
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   animator: {fileID: 0}
   hitBox: {fileID: 7185489134624925779, guid: d165f1c10a29e3d40b591ff888dc91ae, type: 3}
+  modelParentTransform: {fileID: 0}
+  importantObjectMask:
+    serializedVersion: 2
+    m_Bits: 16384
   nextState: {fileID: 8283272697056077171}
   model: {fileID: 0}
   directionInputTime: 0.35
@@ -115,6 +119,10 @@ MonoBehaviour:
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   animator: {fileID: 0}
   hitBox: {fileID: 7185489134624925779, guid: d165f1c10a29e3d40b591ff888dc91ae, type: 3}
+  modelParentTransform: {fileID: 0}
+  importantObjectMask:
+    serializedVersion: 2
+    m_Bits: 16384
   nextState: {fileID: 0}
 --- !u!1 &2697193565026052321
 GameObject:
@@ -172,6 +180,10 @@ MonoBehaviour:
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   animator: {fileID: 0}
   hitBox: {fileID: 7185489134624925779, guid: d165f1c10a29e3d40b591ff888dc91ae, type: 3}
+  modelParentTransform: {fileID: 0}
+  importantObjectMask:
+    serializedVersion: 2
+    m_Bits: 16384
   nextState: {fileID: 8283272697056077171}
 --- !u!1 &6069393021752169178
 GameObject:
@@ -234,7 +246,7 @@ MonoBehaviour:
   playerInfo: {fileID: 0}
   isCancelable: 0
   isComplete: 0
-  inputBufferTime: 0.1
+  inputBufferTime: 0.4
   InputTime: 0
   sprintAttackState: {fileID: 6209561658691682377}
   firstAttackState: {fileID: 5397956325897048633}
@@ -294,4 +306,8 @@ MonoBehaviour:
   gravityMagnitude: {fileID: 11400000, guid: 92f9b50dde82aca4ea65bdf617e6f097, type: 2}
   animator: {fileID: 0}
   hitBox: {fileID: 7185489134624925779, guid: d165f1c10a29e3d40b591ff888dc91ae, type: 3}
+  modelParentTransform: {fileID: 0}
+  importantObjectMask:
+    serializedVersion: 2
+    m_Bits: 16384
   nextState: {fileID: 1328251243473209281}

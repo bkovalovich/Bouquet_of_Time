@@ -38,7 +38,7 @@ namespace Bouquet
 
             Transform roll = model.GetChild(0).GetChild(0).GetChild(0);
             Debug.DrawRay(transform.position, projectedInput * 2, Color.black);
-            //roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.LookRotation(projectedInput, rb.transform.up), 1 - Mathf.Pow(0.01f, Time.deltaTime));
+            roll.localRotation = Quaternion.Slerp(roll.localRotation, Quaternion.LookRotation(projectedInput, rb.transform.up), 1 - Mathf.Pow(0.01f, Time.deltaTime));
         }
 
         public override void PhysicsUpdate()
@@ -52,9 +52,12 @@ namespace Bouquet
                 projectedInput = Vector3.Lerp(projectedInput, localizedInput, 1 - Mathf.Pow(0.001f, Time.deltaTime));
                 //projectedInput = Quaternion.FromToRotation(Vector3.forward, CameraForward) * projectedInput;
                 //projectedInput.Normalize();
-                float y = rb.velocity.y;
-                rb.velocity = Vector3.Project(projectedInput, rb.velocity);
-                rb.velocity = new Vector3(rb.velocity.x, y, rb.velocity.z);
+                Vector3 velocity = rb.velocity;
+                float y = velocity.y;
+                velocity.y -= y;
+                velocity = Vector3.Project(model.GetChild(0).GetChild(0).GetChild(0).forward, velocity).normalized * velocity.magnitude;
+                velocity.y += y;
+                rb.velocity = velocity;
             }
 
             rb.velocity *= 0.95f;

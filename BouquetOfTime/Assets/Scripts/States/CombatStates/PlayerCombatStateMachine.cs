@@ -80,6 +80,10 @@ namespace Bouquet
             ((CombatState)CurrentState).OnStartHitbox(time);
         }
 
+        public void CancelAttack()
+        {
+            animator.SetTrigger("CancelAttack");
+        }
 
 
         public override void EnterState()

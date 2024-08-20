@@ -14,7 +14,7 @@ public class Slime : Enemy {
         rb = GetComponent<Rigidbody>();
     }
     new public void IdleMovement(Vector3 direction, float speed, float duration) {
-        Debug.Log("slime idle started");
+        //Debug.Log("slime idle started");
 
         if (idleEnumeratorRunning == false) {
             StopCoroutine(IdleMotion(direction, speed, duration));
