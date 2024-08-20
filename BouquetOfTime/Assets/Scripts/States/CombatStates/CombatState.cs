@@ -10,6 +10,7 @@ namespace Bouquet
         [SerializeField] protected FloatVariableSO gravityMagnitude;
 
         public Animator animator;
+        public GameObject hitBox;
         public CombatState nextState;
 
         public override void EnterState()
@@ -42,8 +43,14 @@ namespace Bouquet
 
         }
 
-        public void OnStartHitbox()
+        public void OnStartHitbox(float time)
         {
+            GameObject obj = Instantiate(hitBox);
+            obj.transform.position = transform.position + animator.gameObject.transform.forward * 1.5f;
+            obj.transform.rotation = Quaternion.FromToRotation(Vector3.forward, animator.gameObject.transform.forward);
+            HitboxObject hitObject = obj.GetComponent<HitboxObject>();
+            if(hitObject != null) { return; }
+            hitObject.hitBoxTime = time;
 
         }
     }
