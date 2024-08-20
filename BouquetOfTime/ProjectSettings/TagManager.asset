@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemSpawn
   - Door
+  - PHitbox
   layers:
   - Default
   - TransparentFX

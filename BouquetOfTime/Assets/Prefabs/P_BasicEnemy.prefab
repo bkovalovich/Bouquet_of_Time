@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1796483381925073511}
   - component: {fileID: 2146193393815306838}
   - component: {fileID: 2486991848228517301}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: PlayerRadar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 6870456396600637442}
   - component: {fileID: 6880534389715587180}
   - component: {fileID: 4217421958795773271}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: P_BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,3 +269,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
+  currentKnockback: {x: 0, y: 0, z: 0}
+  rend: {fileID: 0}

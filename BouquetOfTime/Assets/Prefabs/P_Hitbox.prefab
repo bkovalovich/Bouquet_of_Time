@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2509984165540743312}
   m_Layer: 2
   m_Name: P_Hitbox
-  m_TagString: Untagged
+  m_TagString: PHitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
