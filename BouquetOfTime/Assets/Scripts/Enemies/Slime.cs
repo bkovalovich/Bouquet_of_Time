@@ -6,6 +6,7 @@ public class Slime : Enemy {
     [SerializeField] public float hopVelocity, chaseVelocity, maxTime;
     private bool inAir; 
     private Vector3 chaseDirection = Vector3.zero;
+    private AudioSource plop; 
 
     private void Awake() {
         stateMachine = new EnemyStateMachine();
@@ -15,6 +16,7 @@ public class Slime : Enemy {
 
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
+        plop = GetComponent<AudioSource>();
         defaultColor = rend.material.color;
     }
     new public void IdleMovement(Vector3 direction, float speed, float duration) {
@@ -26,12 +28,14 @@ public class Slime : Enemy {
 
     new public void ChasePlayer() {
         Debug.Log("chaseplayer called");
+        plop.PlayOneShot(plop.clip);
         chaseDirection = (playerObj.transform.position - transform.position).normalized * chaseVelocity;
         rb.velocity = new Vector3(chaseDirection.x, Vector3.up.y * hopVelocity * Time.deltaTime, chaseDirection.z);
     }
 
     IEnumerator IdleMotion(Vector3 direction, float speed, float duration) {
         idleEnumeratorRunning = true;
+        plop.PlayOneShot(plop.clip);
         rb.velocity = direction * speed * Time.deltaTime;
         rb.velocity = new Vector3(rb.velocity.x, /*Vector3.up.y * hopVelocity * Time.deltaTime*/0, rb.velocity.z);
         yield return new WaitForSeconds(duration);
